@@ -1,8 +1,12 @@
 import React from 'react'
 
-function Profile() {
+function Profile({user}) {
+    console.log(user)
+
+    
+    
   return (
-    <div>Profile</div>
+    <div>{user.name}</div>
   )
 }
 

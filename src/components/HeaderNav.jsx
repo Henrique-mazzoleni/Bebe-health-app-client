@@ -2,17 +2,20 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useContext, Fragment } from 'react';
+import { AuthContext } from '../context/auth.context';
 
 function HeaderNav() {
+  const {isLoggedIn, logOutUser} = useContext(AuthContext)
+  
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
       <Container>
         <Navbar.Brand href="/">Bebe Health Tracker</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/profile">Profile</Nav.Link>
-            <Nav.Link href="#pricing">Parents</Nav.Link>
+                        <Nav.Link href="#pricing">Parents</Nav.Link>
             <NavDropdown title="Children" id="collasible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">All Children</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
@@ -26,10 +29,19 @@ function HeaderNav() {
             </NavDropdown>
           </Nav>
           <Nav>
+
+         {isLoggedIn && <Fragment>
+            <Nav.Link href="/profile">Profile</Nav.Link>
+            <Nav.Link onClick={logOutUser}>Logout</Nav.Link>
+            </Fragment>}
+
+            {!isLoggedIn && <Fragment>
             <Nav.Link href="/login">Login</Nav.Link>
-            <Nav.Link eventKey={2} href="/signup">
-              Sign Up
-            </Nav.Link>
+            <Nav.Link href="/signup">Sign Up</Nav.Link>
+            </Fragment>}
+
+
+
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -5,6 +5,7 @@ import { Alert, Button } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+
 import { AuthContext } from "../context/auth.context";
 
 function Login() {
@@ -24,11 +25,10 @@ function Login() {
         password,
       })
       .then((response) => {
-        console.log(response.data);
         storeToken(response.data.authToken);
-        authenticateUser();
-        navigate("/Profile");
-      })
+        return authenticateUser()
+        
+        }).then(()=>navigate("/profile"))
       .catch((error) => setError(error.response.data.message));
   };
 

@@ -5,10 +5,10 @@ function Sidebar() {
   return (
     <div className='sidebar'>
         <Nav defaultActiveKey="/home" className="flex-column">
-          <Nav.Link href="/home">Sleeps</Nav.Link>
-          <Nav.Link eventKey="link-1">Changes</Nav.Link>
-          <Nav.Link eventKey="link-2">Feeds</Nav.Link>
-          <Nav.Link eventKey="disabled" disabled>
+          <Nav.Link href="/sleeps">Sleeps</Nav.Link>
+          <Nav.Link href="/changes">Changes</Nav.Link>
+          <Nav.Link href="/feeds">Feeds</Nav.Link>
+          <Nav.Link href="disabled" disabled>
             Coming Soon
           </Nav.Link>
         </Nav>
