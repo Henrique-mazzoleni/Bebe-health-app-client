@@ -1,14 +1,14 @@
-import React from 'react'
-import HomeNavCards from '../components/HomeNavCards'
+import React from "react";
+import HomeNavCards from "../components/HomeNavCards";
 
 function HomePage() {
   return (
     <>
-
-    <div className='contentContainer'> <HomeNavCards/> </div>
-    
+      <div className="contentContainer">
+        <HomeNavCards />
+      </div>
     </>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;
