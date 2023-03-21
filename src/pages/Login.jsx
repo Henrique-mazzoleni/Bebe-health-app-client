@@ -1,9 +1,11 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Alert, Button } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
+import { AuthContext } from "../context/auth.context";
 
 function Login() {
   const [email, setEmail] = useState();
@@ -12,15 +14,19 @@ function Login() {
 
   const navigate = useNavigate();
 
+  const { storeToken, authenticateUser } = useContext(AuthContext);
+
   const submitHandler = (e) => {
     e.preventDefault();
     axios
       .post("http://localhost:5005/auth/login", {
         email,
         password,
-       })
+      })
       .then((response) => {
         console.log(response.data);
+        storeToken(response.data.authToken);
+        authenticateUser();
         navigate("/Profile");
       })
       .catch((error) => setError(error.response.data.message));
@@ -28,7 +34,7 @@ function Login() {
 
   const emailHandler = (e) => setEmail(e.target.value);
   const passwordHandler = (e) => setPassword(e.target.value);
-  
+
   return (
     <div className="contentContainer">
       <Form onSubmit={submitHandler}>
@@ -50,7 +56,6 @@ function Login() {
             value={password}
           />
         </Form.Group>
-
 
         <Button type="submit" variant="primary">
           Submit

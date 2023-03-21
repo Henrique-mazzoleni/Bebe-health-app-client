@@ -16,11 +16,11 @@ const AuthProviderWrapper = (props) => {
   const authenticateUser = async () => {
     const storedToken = localStorage.getItem("authToken");
 
-    if (storeToken) {
+    if (storedToken) {
       try {
         const response = await axios.get(`${API_URL}/auth/verify`, {
           headers: {
-            Authorization: `Bearer ${storeToken}`,
+            Authorization: `Bearer ${storedToken}`,
           },
         });
 

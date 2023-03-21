@@ -7,7 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
-import isPrivate from "./components/isPrivate";
+import IsPrivate from "./components/IsPrivate";
 
 function App() {
   return (
@@ -19,7 +19,14 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<isPrivate> <Profile /> </isPrivate>} />
+        <Route
+          path="/profile"
+          element={
+            <IsPrivate>
+              <Profile />
+            </IsPrivate>
+          }
+        />
       </Routes>
 
       <Footer />
