@@ -15,6 +15,9 @@ import Changes from "./pages/Changes";
 import { Container } from "react-bootstrap";
 import { useContext } from "react";
 import { AuthContext } from "./context/auth.context";
+import NewChild from "./pages/NewChild";
+import Invite from "./pages/Invite";
+
 
 
 function App() {
@@ -34,10 +37,12 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/child" element={<Child />} />
+        <Route path="/child/:childId" element={<Child />} />
+        <Route path="/newchild" element={<NewChild />} />
         <Route path="/sleeps" element={<Sleeps />} />
         <Route path="/feeds" element={<Feeds />} />
         <Route path="/changes" element={<Changes />} />
+        <Route path="/invite" element={<Invite />} />
         <Route
           path="/profile"
           element={
