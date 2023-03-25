@@ -38,13 +38,8 @@ main form {
 .container-fluid {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  
-  
-  
-  
-  background-color: #FEEAFA;
-}
+  justify-content: space-around;  
+  }
 
 
 
@@ -118,6 +113,7 @@ main form {
   gap: 50px;
   align-items: center;
   margin-bottom: 100px;
+  width: 350px;
 }
 
 .columnContainer {

@@ -5,7 +5,7 @@ function SignUpPrompt() {
   return (
     <main>
     <div className='prompt'>
-        <Button href='/signup' variant='success'><h2>Sign up today</h2></Button>
+        <Button href='/signup' variant='success'><h2>Signup</h2></Button>
         <h2>or</h2>
         <Button href="/login" variant='primary'><h2>Login</h2></Button>
         </div>
