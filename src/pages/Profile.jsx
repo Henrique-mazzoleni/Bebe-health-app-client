@@ -6,6 +6,7 @@ import Sleep from "../assets/images/sleep.jpg";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import { Container } from "react-bootstrap";
+import SideButtons from "../components/SideButtons";
 
 const API_URL = "http://localhost:5005";
 

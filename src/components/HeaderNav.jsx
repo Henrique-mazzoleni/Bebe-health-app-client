@@ -18,15 +18,26 @@ function HeaderNav() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-                        <Nav.Link href="#pricing">Parents</Nav.Link>
+          <Nav.Link href="/">Home</Nav.Link>
+                        <NavDropdown title="Parents" id="collasible-nav-dropdown">
+              <NavDropdown.Item href="/profile">All Parents</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                Parent 1
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Child 2</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="/invite">
+                Add another parent
+              </NavDropdown.Item>
+            </NavDropdown>
             <NavDropdown title="Children" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">All Children</NavDropdown.Item>
+              <NavDropdown.Item href="/profile">All Children</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
                 Child 1
               </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Child 2</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
+              <NavDropdown.Item href="/newchild">
                 Add another child
               </NavDropdown.Item>
             </NavDropdown>

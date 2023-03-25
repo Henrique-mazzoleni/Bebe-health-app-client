@@ -33,7 +33,7 @@ function Child() {
   return (
     <>
     <aside>
-      <Sidebar/>
+      <Sidebar childId={childId}/>
     </aside>
     <main>
   
@@ -64,7 +64,7 @@ function Child() {
 
        
         <div>
-        <HomeNavCards />
+        <HomeNavCards childId={childId}/>
         </div>
         </main>
         </>

@@ -35,15 +35,22 @@ main form {
     width: 40vw;
 }
 
-.footer {
+.container-fluid {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  width: 75vw;
+  justify-content: space-around;
+  
+  
+  
+  
+  background-color: #FEEAFA;
 }
+
+
 
 .footerCell img {
   width: 50px;
+  
 }
 
 .logo {
@@ -111,4 +118,30 @@ main form {
   gap: 50px;
   align-items: center;
   margin-bottom: 100px;
+}
+
+.columnContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 50px;
+
+}
+
+.col1 {
+width: 100%;
+}
+
+.col2 {
+  
+}
+
+.col2 form {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.col2 input {
+  width: 200px
 }

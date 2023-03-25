@@ -39,9 +39,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/child/:childId" element={<Child />} />
         <Route path="/newchild" element={<NewChild />} />
-        <Route path="/sleeps" element={<Sleeps />} />
-        <Route path="/feeds" element={<Feeds />} />
-        <Route path="/changes" element={<Changes />} />
+        <Route path="/sleeps/:childId" element={<Sleeps />} />
+        <Route path="/feeds/:childId" element={<Feeds />} />
+        <Route path="/changes/:childId" element={<Changes />} />
         <Route path="/invite" element={<Invite />} />
         <Route
           path="/profile"
