@@ -1,12 +1,13 @@
 import React from "react";
 import HomeNavCards from "../components/HomeNavCards";
+import Welcome from "../components/Welcome";
 
 function HomePage() {
   return (
     <>
-      <div className="contentContainer">
-        <HomeNavCards />
-      </div>
+      <main>
+        <Welcome/>
+      </main>
     </>
   );
 }

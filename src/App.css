@@ -23,6 +23,12 @@ main {
   align-items: center;
   padding-left: 20px;
   border-radius: 10px;
+ 
+}
+
+main h1 {
+  text-transform: capitalize;
+  padding-top: 0;
 }
 
 main form {
@@ -30,10 +36,14 @@ main form {
 }
 
 .footer {
-  color: white;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  width: 75vw;
+}
+
+.footerCell img {
+  width: 50px;
 }
 
 .logo {
@@ -61,4 +71,44 @@ main form {
 
 .dropDown {
   text-transform: capitalize;
+}
+
+.headerNav {
+  border-radius: 10px;
+  background-color: #FEEAFA;
+}
+
+.welcomeFlex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  padding-top: 50px;
+  flex-wrap: wrap;
+  margin-bottom: 100px;
+  
+
+}
+
+.welcome {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  
+  
+}
+
+.img img{
+  width: 100px;
+}
+
+.prompt {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  align-items: center;
+  margin-bottom: 100px;
 }
