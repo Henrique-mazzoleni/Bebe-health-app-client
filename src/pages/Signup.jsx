@@ -23,7 +23,7 @@ function Signup() {
       })
       .then((response) => {
         console.log(response.data);
-        navigate("/");
+        navigate("/login");
       })
       .catch((error) => setError(error.response.data.message));
   };
@@ -71,7 +71,7 @@ function Signup() {
           </Alert>
         )}
       </Form>
-      </main>
+    </main>
   );
 }
 
