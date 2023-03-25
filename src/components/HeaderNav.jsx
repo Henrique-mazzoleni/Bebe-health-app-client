@@ -12,7 +12,7 @@ function HeaderNav() {
   return (
     <>
     <div className='logo'><img src={Logo}/><Navbar.Brand href="/">Bebe Health Tracker</Navbar.Brand></div>
-    <Navbar collapseOnSelect expand="lg">
+    <Navbar className="headerNav" collapseOnSelect expand="lg">
       <Container>
         
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

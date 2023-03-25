@@ -58,7 +58,7 @@ function Profile() {
         <Sidebar />
       </aside>
       <main>
-        <h1>{user?.name}</h1>
+        <h1>My Profile</h1>
         <div className="homeCards">
           {user?.children.map((singleChild) => {
             return (

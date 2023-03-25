@@ -5,8 +5,10 @@ import SideButtons from './SideButtons';
 function Sidebar() {
   return (
     <div className='sidebar'>
-        <Nav defaultActiveKey="/home" className="flex-column">
+        <Nav className="flex-column">
+        <Nav.Item>
           <Nav.Link href="/sleeps">Sleeps</Nav.Link>
+          </Nav.Item>
           <Nav.Link href="/changes">Changes</Nav.Link>
           <Nav.Link href="/feeds">Feeds</Nav.Link>
           <Nav.Link href="disabled" disabled>

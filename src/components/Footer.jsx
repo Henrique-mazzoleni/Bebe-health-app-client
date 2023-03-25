@@ -1,19 +1,20 @@
 import React from 'react'
-import { Container } from 'react-bootstrap';
-import Navbar from 'react-bootstrap/Navbar';
+import Logo from '../assets/images/bebehealthlogo.jpg'
+
 
 
 function Footer() {
   return (
    
-    <Navbar className='footer' fixed="bottom" bg="dark" variant="dark">
-    <Container>
-    <div className='footerCell'>Bebe Health Tracker</div>
+    <nav class="navbar fixed-bottom bg-light">
+  <div class="container-fluid">
+  <div className='footerCell'>Bebe Health Tracker</div>
     <div className='footerCell'>Navigation Link</div>
     <div className='footerCell'>Contact</div>
-    </Container>
-
-    </Navbar>
+    <div className='footerCell'><img src={Logo}/></div>
+  </div>
+</nav>
+ 
     
   )
 }
