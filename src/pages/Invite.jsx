@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import { Alert, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Sidebar from "../components/Sidebar";
 
 const API_URL = "http://localhost:5005";
 
@@ -49,7 +50,12 @@ function Invite() {
 
   return (
     <>
-      <div>
+    <aside>
+
+      <Sidebar/>
+    </aside>
+
+      <main>
         <h1>Invite</h1>
 
         <Form onSubmit={submitHandler}>
@@ -67,7 +73,7 @@ function Invite() {
             <Form.Select aria-label="children" onChange={childHandler}>
               <option>Choose a Child</option>
               {user?.children.map((child) => (
-                <option value={child._id}>{child.name}</option>
+                <option className="dropDown" value={child._id}>{child.name}</option>
               ))}
             </Form.Select>
           </Form.Group>
@@ -80,7 +86,7 @@ function Invite() {
             </Alert>
           )}
         </Form>
-      </div>
+      </main>
     </>
   );
 }

@@ -30,8 +30,8 @@ function App() {
 
       <HeaderNav />
 
-      <Sidebar />
-      <div className="contentContainer">
+     
+      
 
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -54,7 +54,7 @@ function App() {
       </Routes>
 
       <Footer />
-      </div>
+      
       </Container>
     </div>
   );

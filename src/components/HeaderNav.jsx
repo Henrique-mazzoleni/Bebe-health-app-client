@@ -4,14 +4,17 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useContext, Fragment } from 'react';
 import { AuthContext } from '../context/auth.context';
+import Logo from '../assets/images/bebehealthlogo.jpg'
 
 function HeaderNav() {
   const {isLoggedIn, logOutUser} = useContext(AuthContext)
   
   return (
-    <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+    <>
+    <div className='logo'><img src={Logo}/><Navbar.Brand href="/">Bebe Health Tracker</Navbar.Brand></div>
+    <Navbar collapseOnSelect expand="lg">
       <Container>
-        <Navbar.Brand href="/">Bebe Health Tracker</Navbar.Brand>
+        
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
@@ -46,6 +49,7 @@ function HeaderNav() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    </>
   );
 }
 

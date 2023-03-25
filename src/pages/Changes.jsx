@@ -1,8 +1,15 @@
 import React from 'react'
+import Sidebar from '../components/Sidebar'
 
 function Changes() {
   return (
-    <div>Changes</div>
+    <div><aside>
+    <Sidebar/>
+  </aside>
+  <main>
+    <h1>Changes</h1>
+  </main>
+  </div>
   )
 }
 

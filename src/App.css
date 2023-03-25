@@ -1,34 +1,64 @@
+
+
 .homeCards {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
     gap: 20px;
   align-items: center;
-  padding-top: 20px;
+  
+}
+
+.details {
+  text-transform: capitalize;
 }
 
 .sidebar {
-  
   float: left;
 }
 
-
-
-.contentContainer {
+main {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  }
+  flex-direction: column;
+  align-items: center;
+  padding-left: 20px;
+  border-radius: 10px;
+}
 
-  .contentContainer form {
+main form {
     width: 40vw;
-    
-    }
+}
 
 .footer {
   color: white;
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Dancing Script', cursive;
+  font-size: 50px;
+}
+
+.logo img {
+  width: 100px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 15px;
+  width: 150px;
   
+  
+}
+
+.dropDown {
+  text-transform: capitalize;
 }

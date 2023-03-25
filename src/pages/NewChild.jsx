@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import  Form  from 'react-bootstrap/Form';
 import { Alert, Button } from "react-bootstrap";
 import axios from "axios";
+import Sidebar from '../components/Sidebar';
 
 function NewChild() {
 
@@ -45,7 +46,13 @@ function NewChild() {
     
 
   return (
-    <div className="contentContainer">
+    <>
+        <aside>
+    <Sidebar/>
+  </aside>
+  <main>
+    <h1>Add a Child</h1>
+ 
       <Form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="formGroupName">
           <Form.Label>Name</Form.Label>
@@ -102,7 +109,9 @@ function NewChild() {
           </Alert>
         )}
       </Form>
-    </div>
+      </main>
+
+    </>
   )
 }
 

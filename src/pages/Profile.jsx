@@ -4,6 +4,8 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Sleep from "../assets/images/sleep.jpg";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "../components/Sidebar";
+import { Container } from "react-bootstrap";
 
 const API_URL = "http://localhost:5005";
 
@@ -42,7 +44,11 @@ function Profile() {
   };
 
   return (
-    <div>
+    <>
+    <aside> 
+      <Sidebar />
+    </aside>
+    <main>
       <h1>{user?.name}</h1>
       <div className="homeCards">
         {user?.children.map((singleChild) => {
@@ -61,8 +67,9 @@ function Profile() {
         })}
       </div>
 
-      <a href="/newchild">Add a Child</a>
-      <a href="/invite">Invite another Parent</a>
+
+      
+      
 
       {user?.invitations.length !== 0 && <h3>Your Invitations</h3>}
       {user?.invitations.map((invite) => {
@@ -80,7 +87,8 @@ function Profile() {
           </Card>
         );
       })}
-    </div>
+      </main>
+      </>
   );
 }
 

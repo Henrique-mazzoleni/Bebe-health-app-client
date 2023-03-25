@@ -33,7 +33,7 @@ function Signup() {
   const nameHandler = (e) => setName(e.target.value);
 
   return (
-    <div className="contentContainer">
+    <main>
       <Form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="formGroupEmail">
           <Form.Label>Email address</Form.Label>
@@ -71,7 +71,7 @@ function Signup() {
           </Alert>
         )}
       </Form>
-    </div>
+      </main>
   );
 }
 

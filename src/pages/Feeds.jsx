@@ -1,8 +1,15 @@
 import React from 'react'
+import Sidebar from '../components/Sidebar'
 
 function Feeds() {
   return (
-    <div>Feeds</div>
+    <div><aside>
+    <Sidebar/>
+  </aside>
+  <main>
+    <h1>Feeds</h1>
+  </main>
+  </div>
   )
 }
 

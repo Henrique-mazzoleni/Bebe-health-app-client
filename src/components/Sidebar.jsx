@@ -1,5 +1,6 @@
 import React from 'react'
 import Nav from 'react-bootstrap/Nav';
+import SideButtons from './SideButtons';
 
 function Sidebar() {
   return (
@@ -12,7 +13,9 @@ function Sidebar() {
             Coming Soon
           </Nav.Link>
         </Nav>
+        <SideButtons/>
       </div>
+
   )
 }
 
