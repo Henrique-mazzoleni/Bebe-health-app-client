@@ -8,7 +8,7 @@ function Footer() {
   return (
     <div className='footer'>
    
-    <nav className="navbar fixed-bottom bg-light">
+    <nav className="navbar fixed-bottom bg-light" >
     <Container>
   <div class="container-fluid">
     <div className='footerCell'>Bebe Health Tracker</div>

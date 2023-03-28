@@ -4,18 +4,23 @@ import { useState, useContext } from "react";
 import { Alert, Button } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
-
 import { AuthContext } from "../context/auth.context";
 
 function Login() {
+
+  // Form useStates
+
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState("");
 
+  // useNavigate for redirect once logged in
+
   const navigate = useNavigate();
 
   const { storeToken, authenticateUser } = useContext(AuthContext);
+
+  // Handler for submission of login forms
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -26,9 +31,9 @@ function Login() {
       })
       .then((response) => {
         storeToken(response.data.authToken);
-        return authenticateUser()
-        
-        }).then(()=>navigate("/profile"))
+        return authenticateUser();
+      })
+      .then(() => navigate("/profile"))
       .catch((error) => setError(error.response.data.message));
   };
 
@@ -36,6 +41,9 @@ function Login() {
   const passwordHandler = (e) => setPassword(e.target.value);
 
   return (
+
+    // Login Form
+
     <main>
       <Form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="formGroupEmail">
@@ -60,13 +68,16 @@ function Login() {
         <Button type="submit" variant="primary">
           Submit
         </Button>
+
+      {/* Error Handling */}
+
         {error && (
           <Alert key="danger" variant="danger">
             {error}
           </Alert>
         )}
       </Form>
-      </main>
+    </main>
   );
 }
 

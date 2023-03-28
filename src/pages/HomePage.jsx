@@ -1,5 +1,5 @@
 import React from "react";
-import HomeNavCards from "../components/HomeNavCards";
+import HomeNavCards from "../components/NavCards";
 import Welcome from "../components/Welcome";
 
 function HomePage() {

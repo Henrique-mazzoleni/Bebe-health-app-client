@@ -52,21 +52,28 @@ function Profile() {
     loadUser();
   };
 
+
+
   return (
     <>
       <aside>
         <Sidebar />
       </aside>
       <main>
-        <h1>My Profile</h1>
+        <h1>Your Profile</h1>
         <div className="homeCards">
           {user?.children.map((singleChild) => {
+
+            const dateObj = new Date(singleChild?.dateOfBirth);
+
+            const dob = dateObj.toDateString();
+
             return (
-              <Card style={{ width: "18rem" }} key={singleChild._id}>
+              <Card style={{ width: "15rem" }} key={singleChild._id}>
                 <Card.Img variant="top" src={Sleep} />
                 <Card.Body>
                   <Card.Title>{singleChild.name}</Card.Title>
-                  <Card.Text>{singleChild.dateOfBirth}</Card.Text>
+                  <Card.Text>{dob}</Card.Text>
                   <Button href={`child/${singleChild._id}`} variant="primary">
                     Go to {singleChild.name}
                   </Button>
@@ -76,10 +83,12 @@ function Profile() {
           })}
         </div>
 
+        {/* Invitations will be displayed here if any*/}
+
         {user?.invitations.length !== 0 && <h3>Your Invitations</h3>}
         {user?.invitations.map((invite) => {
           return (
-            <Card style={{ width: "18rem" }} key={invite._id}>
+            <Card style={{ width: "15rem" }} key={invite._id}>
               <Card.Body>
                 <Card.Title>{invite.childToAdd.name}</Card.Title>
                 <Card.Text>invite from {invite.invitationFrom.name}</Card.Text>

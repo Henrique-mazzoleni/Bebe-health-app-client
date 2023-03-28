@@ -31,18 +31,30 @@ function HeaderNav() {
     loadUser();
     
   }, []);
-  console.log(user)
+  
   return (
     <>
-    <div className='logo'><a href="/"><img src={Logo}/></a><Navbar.Brand href="/">Bebe Health Tracker</Navbar.Brand></div>
-    <Navbar className="headerNav" collapseOnSelect expand="lg">
+    {/* Header Section */}
+
+    <div className='logo'>
+      <a href="/">
+        <img src={Logo}/>
+      </a><Navbar.Brand href="/">Bebe Health Tracker</Navbar.Brand>
+    </div>
+
+    {/* Navigation Bar with contextual links */}
+
+    <Navbar className="headerNav" collapseOnSelect expand="lg" variant='light' bg='light'>
       <Container>
-        
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
           <Nav.Link href="/">Home</Nav.Link>
-          {isLoggedIn && <Fragment>            
+          
+          {/* Contextual dropdown with childrens names */}
+          
+          {isLoggedIn && 
+          <Fragment>            
             <NavDropdown title="Children" id="collasible-nav-dropdown">
               <NavDropdown.Item href="/profile">All Children</NavDropdown.Item>
               {user?.children.map((singleChild)=>{
@@ -55,18 +67,22 @@ function HeaderNav() {
                 Add another child
               </NavDropdown.Item>
             </NavDropdown>
-            </Fragment>}
+          </Fragment>}
           </Nav>
           <Nav>
 
-         {isLoggedIn && <Fragment>
-            <Nav.Link href="/profile">Profile</Nav.Link>
-            <Nav.Link onClick={logOutUser}>Logout</Nav.Link>
+          {/* Contextual login, logout, and signup links */}
+
+            {isLoggedIn && 
+            <Fragment>
+              <Nav.Link href="/profile">Profile</Nav.Link>
+              <Nav.Link onClick={logOutUser}>Logout</Nav.Link>
             </Fragment>}
 
-            {!isLoggedIn && <Fragment>
-            <Nav.Link href="/login">Login</Nav.Link>
-            <Nav.Link href="/signup">Sign Up</Nav.Link>
+            {!isLoggedIn && 
+            <Fragment>
+              <Nav.Link href="/login">Login</Nav.Link>
+              <Nav.Link href="/signup">Sign Up</Nav.Link>
             </Fragment>}
 
 

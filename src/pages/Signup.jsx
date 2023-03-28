@@ -6,12 +6,19 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {
+
+  // Form useStates
+
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [name, setName] = useState();
   const [error, setError] = useState("");
 
+  // useNavigate for redirect once signed up
+
   const navigate = useNavigate();
+
+  // Handler for submission of signup forms
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -33,6 +40,9 @@ function Signup() {
   const nameHandler = (e) => setName(e.target.value);
 
   return (
+
+    // Signup Form
+
     <main>
       <Form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="formGroupEmail">
@@ -65,6 +75,9 @@ function Signup() {
         <Button type="submit" variant="primary">
           Submit
         </Button>
+
+    {/* Error Handling */}
+
         {error && (
           <Alert key="danger" variant="danger">
             {error}

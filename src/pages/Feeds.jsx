@@ -103,7 +103,7 @@ function Feeds() {
 
 
   </div>
-<div className='col2'>
+<div className='addNew'>
 
 <h3>Add new Feed</h3>
 <Form onSubmit={submitHandler}>

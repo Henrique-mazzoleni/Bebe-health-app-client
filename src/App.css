@@ -1,21 +1,22 @@
-
+/* Child homepage navigation cards */
 
 .homeCards {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-    gap: 20px;
+  gap: 20px;
   align-items: center;
-  
+  text-transform: capitalize;
+  margin-top: 20px;
 }
 
-.details {
-  text-transform: capitalize;
-}
+/* Sidebar positioning */
 
 .sidebar {
   float: left;
 }
+
+/* Styling for login and signup pages */
 
 main {
   display: flex;
@@ -23,7 +24,7 @@ main {
   align-items: center;
   padding-left: 20px;
   border-radius: 10px;
- 
+  margin-top: 20px;
 }
 
 main h1 {
@@ -32,21 +33,10 @@ main h1 {
 }
 
 main form {
-    width: 40vw;
+  width: 40vw;
 }
 
-.container-fluid {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;  
-  }
-
-
-
-.footerCell img {
-  width: 50px;
-  
-}
+/* Header Logo Styling */
 
 .logo {
   display: flex;
@@ -61,14 +51,14 @@ main form {
   width: 100px;
 }
 
+/* Sidebar buttons */
+
 .buttons {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding-left: 15px;
-  width: 150px;
-  
-  
+  width: 150px; 
 }
 
 .dropDown {
@@ -77,8 +67,10 @@ main form {
 
 .headerNav {
   border-radius: 10px;
-  background-color: #FEEAFA;
+  text-transform: capitalize;
 }
+
+/* Homepage features grid */
 
 .welcomeFlex {
   display: flex;
@@ -89,8 +81,6 @@ main form {
   padding-top: 50px;
   flex-wrap: wrap;
   margin-bottom: 100px;
-  
-
 }
 
 .welcome {
@@ -98,13 +88,15 @@ main form {
   display: flex;
   flex-direction: column;
   text-align: center;
-  
-  
 }
+
+/* Homepage icons */
 
 .img img{
   width: 100px;
 }
+
+/* Prompt to log in or signup, displayed if user is not logged in */
 
 .prompt {
   padding-top: 50px;
@@ -116,28 +108,53 @@ main form {
   width: 350px;
 }
 
+/* Container for feeds, naps and changes pages */
+
 .columnContainer {
   display: flex;
   flex-direction: column;
   width: 100%;
   gap: 50px;
-
 }
 
-.col1 {
-width: 100%;
+/* Styling for details tables */
+
+.details {
+  text-transform: capitalize;
+  margin-top: 10px;
 }
 
-.col2 {
-  
-}
+/* Add New Forms Styling */
 
-.col2 form {
+.addNew {
   display: flex;
   flex-direction: column;
-  width: 200px;
+  justify-content: center;
+  align-items: center;
 }
 
-.col2 input {
-  width: 200px
+.addNew form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.addNew input {
+  width: 300px
+}
+
+/* Footer Styling */
+
+.footer {
+  padding-top: 100px;
+}
+
+.container-fluid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;  
+}
+
+.footerCell img {
+  width: 50px;
 }
