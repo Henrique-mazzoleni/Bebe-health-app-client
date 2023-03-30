@@ -18,6 +18,11 @@ import Feeds from "./pages/Feeds";
 import Changes from "./pages/Changes";
 import NewChild from "./pages/NewChild";
 import Invite from "./pages/Invite";
+import AmendChange from "./pages/AmendChange";
+import AmendFeed from "./pages/AmendFeed";
+import AmendSleep from "./pages/AmendSleep";
+import AmendChild from "./pages/AmendChild";
+
 
 import "./App.css";
 
@@ -30,6 +35,9 @@ function App() {
         <HeaderNav />
 
         <Routes>
+
+        {/* Unprotected Routes */}
+
           <Route path="/" element={<HomePage />} />
           <Route
             path="/signup"
