@@ -1,11 +1,13 @@
-import React from "react";
 import { Form, Table, Alert, Button } from "react-bootstrap";
-import Sidebar from "../components/Sidebar";
-import { useParams } from "react-router-dom";
+
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
+import Sidebar from "../components/Sidebar";
 import axios from "axios";
 
 function Changes() {
+  const { childId } = useParams();
 
   // New change useStates
 
@@ -13,14 +15,34 @@ function Changes() {
   const [kind, setKind] = useState("");
   const [consistency, setConsistency] = useState("");
   const [error, setError] = useState("");
+  const [changes, setChanges] = useState([]);
 
   const storedToken = localStorage.getItem("authToken");
 
+  const dateAndTimeHandler = (e) => setDateAndTime(e.target.value);
+  const kindHandler = (e) => setKind(e.target.value);
+  const consistencyHandler = (e) => setConsistency(e.target.value);
+
+  const getAllChanges = () => {
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/api/changes/${childId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        setChanges(response.data);
+      });
+  };
+
+  useEffect(() => {
+    getAllChanges();
+  }, []);
+
   const submitHandler = (e) => {
     e.preventDefault();
+
     axios
       .post(
-        `http://localhost:5005/api/change/${childId}`,
+        `${import.meta.env.VITE_API_URL}/api/changes/${childId}`,
         {
           dateAndTime,
           kind,
@@ -34,27 +56,6 @@ function Changes() {
       })
       .catch((error) => setError(error.response.data.message));
   };
-
-  const dateAndTimeHandler = (e) => setDateAndTime(e.target.value);
-  const kindHandler = (e) => setKind(e.target.value);
-  const consistencyHandler = (e) => setConsistency(e.target.value);
-
-  const [changes, setChanges] = useState([]);
-
-  const { childId } = useParams();
-
-  const getAllChanges = () => {
-    axios
-      .get(`http://localhost:5005/api/change/${childId}`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then((response) => {
-        setChanges(response.data);
-      });
-  };
-  useEffect(() => {
-    getAllChanges();
-  }, []);
 
   return (
     <div>
@@ -78,7 +79,7 @@ function Changes() {
                   const date = new Date(change.dateAndTime);
 
                   return (
-                    <tr>
+                    <tr key={change._id}>
                       <td>
                         {date.toLocaleDateString()}{" "}
                         {date.toLocaleTimeString([], {
