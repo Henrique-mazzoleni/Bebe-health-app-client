@@ -4,19 +4,15 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useContext, Fragment, useState, useEffect } from 'react';
 import { AuthContext } from '../context/auth.context';
-import Logo from '../assets/images/bebehealthlogo.jpg'
+import Logo from '../assets/images/bebehealthlogo.png'
 import axios from 'axios'
 const API_URL = "http://localhost:5005";
+
 function HeaderNav() {
-
- 
   const {isLoggedIn, logOutUser} = useContext(AuthContext)
-
   const [user, setUser] = useState();
-
   const storedToken = localStorage.getItem("authToken");
-
-  
+ 
   const loadUser = () => {
     axios
       .get(`${API_URL}/api/parent`, {
@@ -29,7 +25,6 @@ function HeaderNav() {
 
   useEffect(() => {
     loadUser();
-    
   }, []);
   
   return (
@@ -55,7 +50,7 @@ function HeaderNav() {
           
           {isLoggedIn && 
           <Fragment>            
-            <NavDropdown title="Children" id="collasible-nav-dropdown">
+            <NavDropdown title="Children" id="collapsible-nav-dropdown">
               <NavDropdown.Item href="/profile">All Children</NavDropdown.Item>
               {user?.children.map((singleChild)=>{
                 return <NavDropdown.Item href={`/child/${singleChild._id}`}>

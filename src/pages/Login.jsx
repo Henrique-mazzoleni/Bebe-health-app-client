@@ -45,6 +45,7 @@ function Login() {
     // Login Form
 
     <main>
+    <h1>Login</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="formGroupEmail">
           <Form.Label>Email address</Form.Label>

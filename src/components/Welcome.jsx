@@ -17,6 +17,7 @@ return (
         <div className="welcomeFlex">
 
         {/* Changes card */}
+        
             <div className='welcome'>
             <div className='img'><img src={ChangeIcon} /></div>
             <div className='text'>

@@ -25,6 +25,8 @@ main {
   padding-left: 20px;
   border-radius: 10px;
   margin-top: 20px;
+  color: #141823 ;
+  
 }
 
 main h1 {
@@ -43,8 +45,10 @@ main form {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Nothing You Could Do', cursive;
+  font-weight: 900;
   font-size: 50px;
+  color: #141823 ;
 }
 
 .logo img {
@@ -70,13 +74,14 @@ main form {
   text-transform: capitalize;
 }
 
+
 /* Homepage features grid */
 
 .welcomeFlex {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 50px;
   padding-top: 50px;
   flex-wrap: wrap;
@@ -88,6 +93,10 @@ main form {
   display: flex;
   flex-direction: column;
   text-align: center;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 10px;
+  height: 250px;
+  border-radius: 10px;
 }
 
 /* Homepage icons */
@@ -100,10 +109,12 @@ main form {
 
 .prompt {
   padding-top: 50px;
+  padding-left: 0;
   display: flex;
   flex-direction: row;
-  gap: 50px;
+  gap: 28px;
   align-items: center;
+  justify-content: center;
   margin-bottom: 100px;
   width: 350px;
 }
@@ -153,8 +164,23 @@ main form {
   display: flex;
   flex-direction: row;
   justify-content: space-around;  
+  align-items: center;
+  color: white;
 }
 
 .footerCell img {
   width: 50px;
 }
+
+.footerCell {
+  text-align: center;
+  width: 200px;
+}
+
+.footerCell a {
+  text-decoration: none;
+  color: #DE7886;
+}
+
+
+
