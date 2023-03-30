@@ -1,12 +1,14 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Sleep from "../assets/images/sleep.jpg";
-import { useNavigate } from "react-router-dom";
-import Sidebar from "../components/Sidebar";
 
-const API_URL = "http://localhost:5005";
+import Sleep from "../assets/images/sleep.jpg";
+
+import axios from "axios";
+
+import Sidebar from "../components/Sidebar";
 
 function Profile() {
   const [user, setUser] = useState();
@@ -17,7 +19,7 @@ function Profile() {
 
   const loadUser = () => {
     axios
-      .get(`${API_URL}/api/parent`, {
+      .get(`${import.meta.env.VITE_API_URL}/api/parent`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
@@ -32,8 +34,8 @@ function Profile() {
   const acceptInviteHandler = (inviteId) => {
     axios
       .post(
-        `${API_URL}/api/parent/accept`,
-        { inviteId },
+        `${import.meta.env.VITE_API_URL}/api/parent/invite/accept/${inviteId}`,
+        {},
         {
           headers: { Authorization: `Bearer ${storedToken}` },
         }
@@ -46,16 +48,17 @@ function Profile() {
   };
 
   const denyInviteHandler = async (inviteId) => {
-    await axios.delete(`${API_URL}/api/parent/deny/${inviteId}`, {
-      headers: { Authorization: `Bearer ${storedToken}` },
-    });
+    await axios.delete(
+      `${import.meta.env.VITE_API_URL}/api/parent/invite/deny/${inviteId}`,
+      {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      }
+    );
     loadUser();
   };
 
-
-
   return (
-    <>
+    <Fragment>
       <aside>
         <Sidebar />
       </aside>
@@ -63,7 +66,6 @@ function Profile() {
         <h1>Your Profile</h1>
         <div className="homeCards">
           {user?.children.map((singleChild) => {
-
             const dateObj = new Date(singleChild?.dateOfBirth);
 
             const dob = dateObj.toDateString();
@@ -94,12 +96,14 @@ function Profile() {
                 <Card.Text>invite from {invite.invitationFrom.name}</Card.Text>
                 <Button
                   onClick={acceptInviteHandler.bind(null, invite._id)}
-                  variant="primary">
+                  variant="primary"
+                >
                   Accept
                 </Button>
                 <Button
                   onClick={denyInviteHandler.bind(null, invite._id)}
-                  variant="primary">
+                  variant="primary"
+                >
                   Decline
                 </Button>
               </Card.Body>
@@ -107,7 +111,7 @@ function Profile() {
           );
         })}
       </main>
-    </>
+    </Fragment>
   );
 }
 

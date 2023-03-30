@@ -1,29 +1,33 @@
-import React from "react";
-import Form from "react-bootstrap/Form";
 import { useState } from "react";
-import { Alert, Button } from "react-bootstrap";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function Signup() {
+import Form from "react-bootstrap/Form";
+import { Alert, Button } from "react-bootstrap";
 
+import axios from "axios";
+
+function Signup() {
   // Form useStates
 
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [name, setName] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const [error, setError] = useState("");
 
   // useNavigate for redirect once signed up
 
   const navigate = useNavigate();
 
-  // Handler for submission of signup forms
+  // Handlers for submission of signup forms
+
+  const emailHandler = (e) => setEmail(e.target.value);
+  const passwordHandler = (e) => setPassword(e.target.value);
+  const nameHandler = (e) => setName(e.target.value);
 
   const submitHandler = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5005/auth/signup", {
+      .post(`${import.meta.env.VITE_API_URL}/auth/signup`, {
         email,
         password,
         name,
@@ -35,12 +39,7 @@ function Signup() {
       .catch((error) => setError(error.response.data.message));
   };
 
-  const emailHandler = (e) => setEmail(e.target.value);
-  const passwordHandler = (e) => setPassword(e.target.value);
-  const nameHandler = (e) => setName(e.target.value);
-
   return (
-
     // Signup Form
 
     <main>
@@ -76,7 +75,7 @@ function Signup() {
           Submit
         </Button>
 
-    {/* Error Handling */}
+        {/* Error Handling */}
 
         {error && (
           <Alert key="danger" variant="danger">

@@ -1,6 +1,6 @@
-import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+
 import Sleep from "../assets/images/sleep.jpg";
 import Change from "../assets/images/change.jpg";
 import Feed from "../assets/images/feed.jpg";

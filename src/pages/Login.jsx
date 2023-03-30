@@ -1,17 +1,17 @@
-import React from "react";
-import Form from "react-bootstrap/Form";
 import { useState, useContext } from "react";
-import { Alert, Button } from "react-bootstrap";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
+import { Alert, Button } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+
+import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 
 function Login() {
-
   // Form useStates
 
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   // useNavigate for redirect once logged in
@@ -22,10 +22,13 @@ function Login() {
 
   // Handler for submission of login forms
 
+  const emailHandler = (e) => setEmail(e.target.value);
+  const passwordHandler = (e) => setPassword(e.target.value);
+
   const submitHandler = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5005/auth/login", {
+      .post(`${import.meta.env.VITE_API_URL}/auth/login`, {
         email,
         password,
       })
@@ -37,11 +40,7 @@ function Login() {
       .catch((error) => setError(error.response.data.message));
   };
 
-  const emailHandler = (e) => setEmail(e.target.value);
-  const passwordHandler = (e) => setPassword(e.target.value);
-
   return (
-
     // Login Form
 
     <main>
@@ -69,7 +68,7 @@ function Login() {
           Submit
         </Button>
 
-      {/* Error Handling */}
+        {/* Error Handling */}
 
         {error && (
           <Alert key="danger" variant="danger">

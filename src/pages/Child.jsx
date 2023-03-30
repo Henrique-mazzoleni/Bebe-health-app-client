@@ -1,25 +1,25 @@
-import React from "react";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { useParams } from "react-router-dom";
+
+import { Table } from "react-bootstrap";
+
+import axios from "axios";
+
 import NavCards from "../components/NavCards";
 import Sidebar from "../components/Sidebar";
-import { Table } from "react-bootstrap";
 
 function Child() {
   const [child, setChild] = useState();
   const { childId } = useParams();
   const storedToken = localStorage.getItem("authToken");
-  
+
   useEffect(() => {
     axios
-      .get(`http://localhost:5005/api/child/${childId}`, {
+      .get(`${import.meta.env.VITE_API_URL}/api/child/${childId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
-        
         setChild(response.data);
-     
       });
   }, []);
 
@@ -35,8 +35,7 @@ function Child() {
         <Sidebar childId={childId} />
       </aside>
       <main>
-
-      {/* Children Details Table */}
+        {/* Children Details Table */}
 
         <h1>Details for {child?.name}</h1>
 
@@ -65,8 +64,6 @@ function Child() {
 
         <div>
           <NavCards childId={childId} />
-
-
         </div>
       </main>
     </div>

@@ -1,28 +1,26 @@
-import React, { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import Form from "react-bootstrap/Form";
 import { Alert, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
+
 import Sidebar from "../components/Sidebar";
 
-const API_URL = "http://localhost:5005";
-
 function Invite() {
-  const [email, setEmail] = useState();
-  const [childId, setChildId] = useState();
-  const [user, setUser] = useState();
+  const [email, setEmail] = useState("");
+  const [childId, setChildId] = useState("");
+  const [user, setUser] = useState(null);
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
   const storedToken = localStorage.getItem("authToken");
 
-  const emailHandler = (e) => setEmail(e.target.value);
-  const childHandler = (e) => setChildId(e.target.value);
-
   useEffect(() => {
     axios
-      .get("http://localhost:5005/api/parent", {
+      .get(`${import.meta.env.VITE_API_URL}/api/parent`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
@@ -30,12 +28,15 @@ function Invite() {
       });
   }, []);
 
+  const emailHandler = (e) => setEmail(e.target.value);
+  const childHandler = (e) => setChildId(e.target.value);
+
   const submitHandler = async (e) => {
     e.preventDefault();
 
     try {
       const invite = await axios.post(
-        `${API_URL}/api/parent/invite`,
+        `${import.meta.env.VITE_API_URL}/api/parent/invite`,
         { emailToInvite: email, childId },
         {
           headers: { Authorization: `Bearer ${storedToken}` },
@@ -49,11 +50,10 @@ function Invite() {
   };
 
   return (
-    <>
-    <aside>
-
-      <Sidebar/>
-    </aside>
+    <Fragment>
+      <aside>
+        <Sidebar />
+      </aside>
 
       <main>
         <h1>Invite</h1>
@@ -73,7 +73,9 @@ function Invite() {
             <Form.Select aria-label="children" onChange={childHandler}>
               <option>Choose a Child</option>
               {user?.children.map((child) => (
-                <option className="dropDown" value={child._id}>{child.name}</option>
+                <option className="dropDown" value={child._id} key={child._id}>
+                  {child.name}
+                </option>
               ))}
             </Form.Select>
           </Form.Group>
@@ -87,7 +89,7 @@ function Invite() {
           )}
         </Form>
       </main>
-    </>
+    </Fragment>
   );
 }
 
