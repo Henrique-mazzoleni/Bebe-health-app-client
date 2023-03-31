@@ -86,14 +86,15 @@ function Profile() {
         </div>
 
         {/* Invitations will be displayed here if any*/}
-
+<br />
         {user?.invitations.length !== 0 && <h3>Your Invitations</h3>}
         {user?.invitations.map((invite) => {
           return (
+            <div className="inviteButtons">
             <Card style={{ width: "15rem" }} key={invite._id}>
               <Card.Body>
-                <Card.Title>{invite.childToAdd.name}</Card.Title>
-                <Card.Text>invite from {invite.invitationFrom.name}</Card.Text>
+                <Card.Title>Child Name: {invite.childToAdd.name}</Card.Title>
+                <Card.Text>Invite from {invite.invitationFrom.name}</Card.Text>
                 <Button
                   onClick={acceptInviteHandler.bind(null, invite._id)}
                   variant="primary"
@@ -108,6 +109,7 @@ function Profile() {
                 </Button>
               </Card.Body>
             </Card>
+            </div>
           );
         })}
       </main>

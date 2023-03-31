@@ -6,7 +6,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { useContext, Fragment, useState, useEffect } from "react";
 import { AuthContext } from "../context/auth.context";
 
-import Logo from "../assets/images/bebehealthlogo.jpg";
+import Logo from "../assets/images/bebehealthlogo.png";
 import axios from "axios";
 
 function HeaderNav() {

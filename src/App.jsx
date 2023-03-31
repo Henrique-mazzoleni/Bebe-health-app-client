@@ -25,6 +25,7 @@ import AmendChild from "./pages/AmendChild";
 
 
 import "./App.css";
+import AmendUser from "./pages/AmendUser";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -55,6 +56,8 @@ function App() {
               </IsAnon>
             }
           />
+
+        {/* Protected Routes */}
 
           <Route
             path="/child/:childId"
@@ -112,6 +115,55 @@ function App() {
               </IsPrivate>
             }
           />
+        
+          {/* Change Routes */}
+
+          <Route
+            path="/amendchange"
+            element={
+              <IsPrivate>
+                <AmendChange/>
+              </IsPrivate>
+            }
+          />
+
+          <Route
+            path="/amendchild"
+            element={
+              <IsPrivate>
+                <AmendChild />
+              </IsPrivate>
+            }
+          />
+
+          <Route
+            path="/amendfeed"
+            element={
+              <IsPrivate>
+                <AmendFeed/>
+              </IsPrivate>
+            }
+          />
+
+          <Route
+            path="/amendsleep"
+            element={
+              <IsPrivate>
+                <AmendSleep/>
+              </IsPrivate>
+            }
+          />
+
+          <Route
+            path="/amenduser"
+            element={
+              <IsPrivate>
+                <AmendUser/>
+              </IsPrivate>
+            }
+          />
+
+
         </Routes>
 
         <Footer />

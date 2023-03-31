@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 
 import Sleep from "../assets/images/sleep.jpg";
 import Change from "../assets/images/change.jpg";
-import Feed from "../assets/images/feed.jpg";
+import Feed from "../assets/images/feedCA.jpg";
 
 function NavCards(props) {
   return (
@@ -18,7 +18,7 @@ function NavCards(props) {
           </Button>
         </Card.Body>
       </Card>
-      <Card style={{ width: "15rem" }}>
+      <Card style={{ width: "15rem"  }}>
         <Card.Img variant="top" src={Change} />
         <Card.Body>
           <Card.Title>Changes</Card.Title>
