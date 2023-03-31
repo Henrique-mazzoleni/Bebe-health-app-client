@@ -13,7 +13,7 @@ function NavCards(props) {
         <Card.Body>
           <Card.Title>Sleep Tracker</Card.Title>
           <Card.Text>Log your childs naps.</Card.Text>
-          <Button href={`/sleeps/${props.childId}`} variant="primary">
+          <Button  style={{border:"none", background: "#DE7886" }}  href={`/sleeps/${props.childId}`} variant="primary">
             Go to Sleep Tracker
           </Button>
         </Card.Body>
@@ -23,7 +23,7 @@ function NavCards(props) {
         <Card.Body>
           <Card.Title>Changes</Card.Title>
           <Card.Text>Log your childs changes.</Card.Text>
-          <Button href={`/changes/${props.childId}`} variant="primary">
+          <Button  style={{border:"none", background: "#DE7886" }}  href={`/changes/${props.childId}`} variant="primary">
             Go to Changes Tracker
           </Button>
         </Card.Body>
@@ -33,7 +33,7 @@ function NavCards(props) {
         <Card.Body>
           <Card.Title>Feeds</Card.Title>
           <Card.Text>Log your childs feeds.</Card.Text>
-          <Button href={`/feeds/${props.childId}`} variant="primary">
+          <Button  style={{border:"none", background: "#DE7886" }} href={`/feeds/${props.childId}`} variant="primary">
             Go to Feeds Tracker
           </Button>
         </Card.Body>

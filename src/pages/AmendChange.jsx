@@ -73,7 +73,7 @@ function AmendChange() {
                 Submit
               </Button>
               <br />
-              <Button type="submit" variant="danger">
+              <Button className="btnDelete" type="submit">
                 Delete
               </Button>
               {/* {error && (

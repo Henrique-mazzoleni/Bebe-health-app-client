@@ -11,10 +11,10 @@ function Sidebar(props) {
         {props.childId && (
           <Fragment>
             <Nav.Item>
-              <Nav.Link href={`/sleeps/${props.childId}`}>Sleeps</Nav.Link>
+              <Nav.Link style={{ color: "#DE7886" }} href={`/sleeps/${props.childId}`}>Sleeps</Nav.Link>
             </Nav.Item>
-            <Nav.Link href={`/changes/${props.childId}`}>Changes</Nav.Link>
-            <Nav.Link href={`/feeds/${props.childId}`}>Feeds</Nav.Link>
+            <Nav.Link style={{ color: "#DE7886" }} href={`/changes/${props.childId}`}>Changes</Nav.Link>
+            <Nav.Link style={{ color: "#DE7886" }} href={`/feeds/${props.childId}`}>Feeds</Nav.Link>
             <Nav.Link href="disabled" disabled>
               Coming Soon
             </Nav.Link>

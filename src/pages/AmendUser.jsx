@@ -49,7 +49,7 @@ function AmendUser() {
           Submit
         </Button>
         <br />
-              <Button type="submit" variant="danger">
+              <Button type="submit"  className="btnDelete">
                 Delete Account Permanently
               </Button>
 <br/>

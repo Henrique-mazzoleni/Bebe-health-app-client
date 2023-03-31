@@ -5,10 +5,10 @@ function SideButtons() {
   return (
     <div className="buttons">
       <hr />
-      <Button href="/newchild" variant="outline-success">
+      <Button href="/newchild">
         Add a child
       </Button>
-      <Button href="/invite" variant="outline-success">
+      <Button href="/invite">
         Invite a Parent
       </Button>
     </div>

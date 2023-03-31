@@ -72,7 +72,7 @@ function Signup() {
             value={name}
           />
         </Form.Group>
-        <Button type="submit" variant="primary">
+        <Button type="submit"  className="btn">
           Submit
         </Button>
 

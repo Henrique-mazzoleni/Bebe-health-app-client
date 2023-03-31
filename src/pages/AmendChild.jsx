@@ -69,7 +69,7 @@ function AmendChild() {
      Submit
    </Button>
    <br />
-              <Button type="submit" variant="danger">
+              <Button type="submit"  className="btnDelete">
                 Delete
               </Button>
    {/* {error && (

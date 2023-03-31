@@ -141,7 +141,7 @@ function Sleeps() {
                   </option>
                 </Form.Select>
               </Form.Group>
-              <Button type="submit" variant="primary">
+              <Button type="submit">
                 Submit
               </Button>
               {error && (

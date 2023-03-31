@@ -8,7 +8,7 @@ function SignUpPrompt() {
           <h2>Signup</h2>
         </Button>
         <h2>or</h2>
-        <Button href="/login" variant="primary">
+        <Button className="btnOther" href="/login" variant="primary">
           <h2>Login</h2>
         </Button>
       </div>
