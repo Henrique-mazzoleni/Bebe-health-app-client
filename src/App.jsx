@@ -136,7 +136,7 @@ function App() {
           />
 
           <Route
-            path="/feeds/:childId/:changeId"
+            path="/feeds/:childId/:feedId"
             element={
               <IsPrivate>
                 <AmendFeed />
@@ -145,7 +145,7 @@ function App() {
           />
 
           <Route
-            path="/sleeps/:childId/:changeId"
+            path="/sleeps/:childId/:sleepId"
             element={
               <IsPrivate>
                 <AmendSleep />

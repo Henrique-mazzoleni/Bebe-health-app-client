@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { Form, Table } from "react-bootstrap";
@@ -9,6 +9,7 @@ import Sidebar from "../components/Sidebar";
 import axios from "axios";
 
 function Sleeps() {
+  const navigate = useNavigate();
   const { childId } = useParams();
 
   const [startTime, setStartTime] = useState("");
@@ -79,7 +80,12 @@ function Sleeps() {
                   const endTime = new Date(sleep.endTime);
 
                   return (
-                    <tr key={sleep._id}>
+                    <tr
+                      key={sleep._id}
+                      onClick={() =>
+                        navigate(`/sleeps/${childId}/${sleep._id}`)
+                      }
+                    >
                       <td>
                         {startTime.toLocaleDateString()}
                         {startTime.toLocaleTimeString([], {
@@ -141,9 +147,7 @@ function Sleeps() {
                   </option>
                 </Form.Select>
               </Form.Group>
-              <Button type="submit">
-                Submit
-              </Button>
+              <Button type="submit">Submit</Button>
               {error && (
                 <Alert key="danger" variant="danger">
                   {error}

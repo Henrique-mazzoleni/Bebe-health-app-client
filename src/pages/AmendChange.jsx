@@ -8,8 +8,7 @@ import axios from "axios";
 function AmendChange() {
   const navigate = useNavigate();
 
-  const { childId } = useParams();
-  const { changeId } = useParams();
+  const { childId, changeId } = useParams();
 
   const [dateAndTime, setDateAndTime] = useState("");
   const [kind, setKind] = useState("");
