@@ -36,8 +36,7 @@ function App() {
         <HeaderNav />
 
         <Routes>
-
-        {/* Unprotected Routes */}
+          {/* Unprotected Routes */}
 
           <Route path="/" element={<HomePage />} />
           <Route
@@ -57,7 +56,7 @@ function App() {
             }
           />
 
-        {/* Protected Routes */}
+          {/* Protected Routes */}
 
           <Route
             path="/child/:childId"
@@ -115,20 +114,20 @@ function App() {
               </IsPrivate>
             }
           />
-        
+
           {/* Change Routes */}
 
           <Route
-            path="/amendchange"
+            path="/changes/:childId/:changeId"
             element={
               <IsPrivate>
-                <AmendChange/>
+                <AmendChange />
               </IsPrivate>
             }
           />
 
           <Route
-            path="/amendchild"
+            path="/ammendChild/:childId/"
             element={
               <IsPrivate>
                 <AmendChild />
@@ -137,19 +136,19 @@ function App() {
           />
 
           <Route
-            path="/amendfeed"
+            path="/feeds/:childId/:changeId"
             element={
               <IsPrivate>
-                <AmendFeed/>
+                <AmendFeed />
               </IsPrivate>
             }
           />
 
           <Route
-            path="/amendsleep"
+            path="/sleeps/:childId/:changeId"
             element={
               <IsPrivate>
-                <AmendSleep/>
+                <AmendSleep />
               </IsPrivate>
             }
           />
@@ -158,12 +157,10 @@ function App() {
             path="/amenduser"
             element={
               <IsPrivate>
-                <AmendUser/>
+                <AmendUser />
               </IsPrivate>
             }
           />
-
-
         </Routes>
 
         <Footer />

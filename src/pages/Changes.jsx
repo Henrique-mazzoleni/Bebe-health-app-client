@@ -1,12 +1,14 @@
 import { Form, Table, Alert, Button } from "react-bootstrap";
 
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import Sidebar from "../components/Sidebar";
 import axios from "axios";
 
 function Changes() {
+  const navigate = useNavigate();
+
   const { childId } = useParams();
 
   // New change useStates
@@ -79,9 +81,14 @@ function Changes() {
                   const date = new Date(change.dateAndTime);
 
                   return (
-                    <tr key={change._id}>
+                    <tr
+                      key={change._id}
+                      onClick={() => {
+                        navigate(`/changes/${childId}/${change._id}`);
+                      }}
+                    >
                       <td>
-                        {date.toLocaleDateString()}{" "}
+                        {date.toLocaleDateString()}
                         {date.toLocaleTimeString([], {
                           hour: "2-digit",
                           minute: "2-digit",
