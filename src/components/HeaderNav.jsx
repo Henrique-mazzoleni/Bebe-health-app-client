@@ -17,16 +17,17 @@ function HeaderNav() {
   const storedToken = localStorage.getItem("authToken");
 
   const loadUser = () => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/api/parent`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then((response) => {
-        setUser(response.data);
-      })
-      .catch(() => {
-        setUser(null);
-      });
+    if (storedToken)
+      axios
+        .get(`${import.meta.env.VITE_API_URL}/api/parent`, {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        })
+        .then((response) => {
+          setUser(response.data);
+        })
+        .catch(() => {
+          setUser(null);
+        });
   };
 
   useEffect(() => {

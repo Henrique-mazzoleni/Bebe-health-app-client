@@ -4,28 +4,11 @@ import Logo from "../assets/images/bebehealthlogo.png";
 import Nav from "react-bootstrap/Nav";
 import { Container } from "react-bootstrap";
 import { AuthContext } from "../context/auth.context";
-import { useContext, useState, useEffect, Fragment } from "react";
-const API_URL = "http://localhost:5005";
-import axios from "axios";
+import { useContext, Fragment } from "react";
 
 function Footer() {
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
-  const [user, setUser] = useState();
-  const storedToken = localStorage.getItem("authToken");
 
-  const loadUser = () => {
-    axios
-      .get(`${API_URL}/api/parent`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then((response) => {
-        setUser(response.data);
-      });
-  };
-
-  useEffect(() => {
-    loadUser();
-  }, []);
   return (
     <div className="footer">
       <nav className="navbar fixed-bottom bg-dark">
