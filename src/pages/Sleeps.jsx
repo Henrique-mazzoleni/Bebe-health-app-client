@@ -109,7 +109,7 @@ function Sleeps() {
             </Table>
           </div>
           <div className="addNew">
-            <h3>Add new Feed</h3>
+            <h3>Add new Sleep</h3>
             <Form onSubmit={submitHandler}>
               <Form.Group className="mb-3" controlId="formGroupStartTime">
                 <Form.Label>Start Time</Form.Label>

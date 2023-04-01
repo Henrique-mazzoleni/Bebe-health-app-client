@@ -41,7 +41,6 @@ function NewChild() {
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((response) => {
-        console.log(response.data);
         navigate("/profile");
       })
       .catch((error) => setError(error.response.data.message));
