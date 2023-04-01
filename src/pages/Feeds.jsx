@@ -111,6 +111,9 @@ function Feeds() {
                       </td>
                       <td>{feed.bottleVolume ? feed.bottleVolume : "N/A"}</td>
                       <td>{feed.throwUp ? "Yes" : "No"}</td>
+                      <td><Button href="/amendfeed" className="btnDelete">
+            Amend/Delete
+          </Button></td>
                     </tr>
                   );
                 })}

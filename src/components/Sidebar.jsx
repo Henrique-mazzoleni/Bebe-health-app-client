@@ -8,6 +8,8 @@ function Sidebar(props) {
   return (
     <div className="sidebar">
       <Nav className="flex-column">
+      
+
         {props.childId && (
           <Fragment>
             <Nav.Item>
@@ -18,6 +20,8 @@ function Sidebar(props) {
             <Nav.Link href="disabled" disabled>
               Coming Soon
             </Nav.Link>
+               
+
           </Fragment>
         )}
       </Nav>

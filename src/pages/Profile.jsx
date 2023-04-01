@@ -109,9 +109,13 @@ function Profile() {
                 </Button>
               </Card.Body>
             </Card>
+            
             </div>
           );
         })}
+        <Button href="/amenduser" className="btnDelete">
+            Amend/Delete User
+          </Button>
       </main>
     </Fragment>
   );

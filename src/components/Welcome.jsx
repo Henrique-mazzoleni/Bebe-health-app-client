@@ -15,19 +15,7 @@ function Welcome() {
   return (
     <main>
       <div className="welcomeFlex">
-        {/* Changes card */}
-        <div className="welcome">
-          <div className="img">
-            <img src={ChangeIcon} />
-          </div>
-          <div className="text">
-            <h3>Track your childs changes</h3>
-            <p>
-              Track your childs changes by date and time, wet, dry or both, and
-              the consistency to better understand your childs health.{" "}
-            </p>
-          </div>
-        </div>
+        
 
         {/* Sleeps card */}
 
@@ -39,6 +27,19 @@ function Welcome() {
             <h3>Track your childs sleeps</h3>
             <p>
               Record when you child sleeps, for how long and where they sleep.
+            </p>
+          </div>
+        </div>
+        {/* Changes card */}
+        <div className="welcome">
+          <div className="img">
+            <img src={ChangeIcon} />
+          </div>
+          <div className="text">
+            <h3>Track your childs changes</h3>
+            <p>
+              Track your childs changes by date and time, wet, dry or both, and
+              the consistency to better understand your childs health.{" "}
             </p>
           </div>
         </div>

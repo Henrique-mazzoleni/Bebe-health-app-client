@@ -96,6 +96,9 @@ function Sleeps() {
                       </td>
                       <td>{sleep.duration} Hours</td>
                       <td>{sleep.location}</td>
+                      <td><Button href="/amendsleep" className="btnDelete">
+            Amend/Delete
+          </Button></td>
                     </tr>
                   );
                 })}

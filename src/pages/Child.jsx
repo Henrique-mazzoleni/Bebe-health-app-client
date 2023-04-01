@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import { Table } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 
 import axios from "axios";
 
@@ -47,6 +47,7 @@ function Child() {
               <th>Gender</th>
               <th>Weight at Birth</th>
               <th>Size at Birth</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -56,6 +57,9 @@ function Child() {
               <td>{child?.gender}</td>
               <td>{child?.weightAtBirth}</td>
               <td>{child?.sizeAtBirth}</td>
+              <td><Button href="/amendchild" className="btnDelete">
+            Amend/Delete
+          </Button></td>
             </tr>
           </tbody>
         </Table>

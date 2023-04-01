@@ -72,6 +72,7 @@ function Changes() {
                   <th>Date and Time</th>
                   <th>Kind</th>
                   <th>consistency</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -89,6 +90,9 @@ function Changes() {
                       </td>
                       <td>{change.kind}</td>
                       <td>{change.consistency}</td>
+                      <td><Button href="/amendchange" className="btnDelete">
+            Amend/Delete
+          </Button></td>
                     </tr>
                   );
                 })}
