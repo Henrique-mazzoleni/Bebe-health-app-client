@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { Table, Button } from "react-bootstrap";
 
@@ -9,6 +9,8 @@ import NavCards from "../components/NavCards";
 import Sidebar from "../components/Sidebar";
 
 function Child() {
+  const navigate = useNavigate();
+
   const [child, setChild] = useState();
   const { childId } = useParams();
   const storedToken = localStorage.getItem("authToken");
@@ -20,6 +22,9 @@ function Child() {
       })
       .then((response) => {
         setChild(response.data);
+      })
+      .catch((error) => {
+        setError(error.response.data.message);
       });
   }, []);
 
@@ -51,7 +56,11 @@ function Child() {
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr
+              onClick={() => {
+                navigate(`/ammendChild/${child?._id}`);
+              }}
+            >
               <td>{child?.name}</td>
               <td>{dob}</td>
               <td>{child?.gender}</td>

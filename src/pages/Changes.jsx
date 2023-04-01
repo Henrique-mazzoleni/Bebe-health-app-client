@@ -1,12 +1,14 @@
 import { Form, Table, Alert, Button } from "react-bootstrap";
 
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import Sidebar from "../components/Sidebar";
 import axios from "axios";
 
 function Changes() {
+  const navigate = useNavigate();
+
   const { childId } = useParams();
 
   // New change useStates
@@ -30,6 +32,9 @@ function Changes() {
       })
       .then((response) => {
         setChanges(response.data);
+      })
+      .catch((error) => {
+        setError(error.response.data.message);
       });
   };
 
@@ -54,7 +59,9 @@ function Changes() {
         setError("");
         getAllChanges();
       })
-      .catch((error) => setError(error.response.data.message));
+      .catch((error) => {
+        setError(error.response.data.message);
+      });
   };
 
   return (
@@ -80,9 +87,14 @@ function Changes() {
                   const date = new Date(change.dateAndTime);
 
                   return (
-                    <tr key={change._id}>
+                    <tr
+                      key={change._id}
+                      onClick={() => {
+                        navigate(`/changes/${childId}/${change._id}`);
+                      }}
+                    >
                       <td>
-                        {date.toLocaleDateString()}{" "}
+                        {date.toLocaleDateString()}
                         {date.toLocaleTimeString([], {
                           hour: "2-digit",
                           minute: "2-digit",
@@ -115,7 +127,11 @@ function Changes() {
 
               <Form.Group className="mb-3" controlId="formGroupKind">
                 <Form.Label>Kind</Form.Label>
-                <Form.Select aria-label="kind" onChange={kindHandler}>
+                <Form.Select
+                  aria-label="kind"
+                  onChange={kindHandler}
+                  value={kind}
+                >
                   <option>Change Kind</option>
 
                   <option className="dropDown" value="wet">
@@ -135,7 +151,11 @@ function Changes() {
 
               <Form.Group className="mb-3" controlId="formGroupConsistency">
                 <Form.Label>Consistency</Form.Label>
-                <Form.Select aria-label="kind" onChange={consistencyHandler}>
+                <Form.Select
+                  aria-label="kind"
+                  onChange={consistencyHandler}
+                  value={consistency}
+                >
                   <option>Consistency</option>
 
                   <option className="dropDown" value="liquid">
