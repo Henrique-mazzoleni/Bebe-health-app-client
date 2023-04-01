@@ -30,6 +30,9 @@ function Feeds() {
       })
       .then((response) => {
         setFeeds(response.data);
+      })
+      .catch((error) => {
+        setError(error.response.data.message);
       });
   };
   useEffect(() => {
@@ -63,7 +66,9 @@ function Feeds() {
       .then((response) => {
         getAllFeeds();
       })
-      .catch((error) => setError(error.response.data.message));
+      .catch((error) => {
+        setError(error.response.data.message);
+      });
   };
 
   return (

@@ -27,6 +27,9 @@ function Sleeps() {
       })
       .then((response) => {
         setSleeps(response.data);
+      })
+      .catch((error) => {
+        setError(error.response.data.message);
       });
   };
 
@@ -53,7 +56,9 @@ function Sleeps() {
       .then((response) => {
         getAllSleeps();
       })
-      .catch((error) => setError(error.response.data.message));
+      .catch((error) => {
+        setError(error.response.data.message);
+      });
   };
 
   return (

@@ -25,6 +25,9 @@ function Invite() {
       })
       .then((response) => {
         setUser(response.data);
+      })
+      .catch((error) => {
+        setError(error.response.data.message);
       });
   }, []);
 

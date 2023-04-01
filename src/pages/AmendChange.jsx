@@ -21,7 +21,7 @@ function AmendChange() {
 
   const storedToken = localStorage.getItem("authToken");
 
-  const getChange = () => {
+  useEffect(() => {
     axios
       .get(
         `${import.meta.env.VITE_API_URL}/api/changes/${childId}/${changeId}`,
@@ -35,11 +35,10 @@ function AmendChange() {
         setDateAndTime(dateTimeTransform(dateAndTime));
         setKind(kind);
         setConsistency(consistency);
+      })
+      .catch((error) => {
+        setError(error.response.data.message);
       });
-  };
-
-  useEffect(() => {
-    getChange();
   }, []);
 
   const dateAndTimeHandler = (e) => setDateAndTime(e.target.value);
@@ -62,7 +61,9 @@ function AmendChange() {
       .then((response) => {
         navigate(`/changes/${childId}`);
       })
-      .catch((error) => setError(error.response.data.message));
+      .catch((error) => {
+        setError(error.response.data.message);
+      });
   };
 
   const deleteHandler = () => {
@@ -74,7 +75,9 @@ function AmendChange() {
       .then((response) => {
         navigate(`/changes/${childId}`);
       })
-      .catch((error) => setError(error.response.data.message));
+      .catch((error) => {
+        setError(error.response.data.message);
+      });
   };
 
   return (

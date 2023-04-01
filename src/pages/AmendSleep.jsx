@@ -20,7 +20,7 @@ function AmendSleep() {
 
   const storedToken = localStorage.getItem("authToken");
 
-  const getSleep = () => {
+  useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/api/sleeps/${childId}/${sleepId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
@@ -30,11 +30,10 @@ function AmendSleep() {
         setStartTime(dateTimeTransform(startTime));
         setEndTime(dateTimeTransform(endTime));
         setLocation(location);
+      })
+      .catch((error) => {
+        setError(error.response.data.message);
       });
-  };
-
-  useEffect(() => {
-    getSleep();
   }, []);
 
   const startTimeHandler = (e) => setStartTime(e.target.value);
@@ -57,7 +56,9 @@ function AmendSleep() {
       .then((response) => {
         navigate(`/sleeps/${childId}`);
       })
-      .catch((error) => setError(error.response.data.message));
+      .catch((error) => {
+        setError(error.response.data.message);
+      });
   };
 
   const deleteHandler = () => {
@@ -69,7 +70,9 @@ function AmendSleep() {
       .then((response) => {
         navigate(`/sleeps/${childId}`);
       })
-      .catch((error) => setError(error.response.data.message));
+      .catch((error) => {
+        setError(error.response.data.message);
+      });
   };
 
   return (

@@ -12,6 +12,7 @@ import Sidebar from "../components/Sidebar";
 
 function Profile() {
   const [user, setUser] = useState();
+  const [error, setError] = useState("");
 
   const storedToken = localStorage.getItem("authToken");
 
@@ -24,6 +25,9 @@ function Profile() {
       })
       .then((response) => {
         setUser(response.data);
+      })
+      .catch((error) => {
+        setError(error.response.data.message);
       });
   };
 
@@ -44,17 +48,24 @@ function Profile() {
         const child = response.data;
 
         navigate(`/child/${child._id}`);
+      })
+      .catch((error) => {
+        setError(error.response.data.message);
       });
   };
 
   const denyInviteHandler = async (inviteId) => {
-    await axios.delete(
-      `${import.meta.env.VITE_API_URL}/api/parent/invite/deny/${inviteId}`,
-      {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      }
-    );
-    loadUser();
+    try {
+      await axios.delete(
+        `${import.meta.env.VITE_API_URL}/api/parent/invite/deny/${inviteId}`,
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
+      );
+      loadUser();
+    } catch (error) {
+      setError(error.response.data.message);
+    }
   };
 
   return (
@@ -86,32 +97,39 @@ function Profile() {
         </div>
 
         {/* Invitations will be displayed here if any*/}
-<br />
+        <br />
         {user?.invitations.length !== 0 && <h3>Your Invitations</h3>}
         {user?.invitations.map((invite) => {
           return (
             <div className="inviteButtons">
-            <Card style={{ width: "15rem" }} key={invite._id}>
-              <Card.Body>
-                <Card.Title>Child Name: {invite.childToAdd.name}</Card.Title>
-                <Card.Text>Invite from {invite.invitationFrom.name}</Card.Text>
-                <Button
-                  onClick={acceptInviteHandler.bind(null, invite._id)}
-                  variant="primary"
-                >
-                  Accept
-                </Button>
-                <Button
-                  onClick={denyInviteHandler.bind(null, invite._id)}
-                  variant="primary"
-                >
-                  Decline
-                </Button>
-              </Card.Body>
-            </Card>
+              <Card style={{ width: "15rem" }} key={invite._id}>
+                <Card.Body>
+                  <Card.Title>Child Name: {invite.childToAdd.name}</Card.Title>
+                  <Card.Text>
+                    Invite from {invite.invitationFrom.name}
+                  </Card.Text>
+                  <Button
+                    onClick={acceptInviteHandler.bind(null, invite._id)}
+                    variant="primary"
+                  >
+                    Accept
+                  </Button>
+                  <Button
+                    onClick={denyInviteHandler.bind(null, invite._id)}
+                    variant="primary"
+                  >
+                    Decline
+                  </Button>
+                </Card.Body>
+              </Card>
             </div>
           );
         })}
+        {error && (
+          <Alert key="danger" variant="danger">
+            {error}
+          </Alert>
+        )}
       </main>
     </Fragment>
   );

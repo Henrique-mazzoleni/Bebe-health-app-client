@@ -43,7 +43,9 @@ function NewChild() {
       .then((response) => {
         navigate("/profile");
       })
-      .catch((error) => setError(error.response.data.message));
+      .catch((error) => {
+        setError(error.response.data.message);
+      });
   };
 
   return (

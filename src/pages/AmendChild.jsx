@@ -35,6 +35,9 @@ function AmendChild() {
         setGender(gender);
         setWeightAtBirth(weightAtBirth);
         setSizeAtBirth(sizeAtBirth);
+      })
+      .catch((error) => {
+        setError(error.response.data.message);
       });
   }, []);
 
@@ -62,7 +65,9 @@ function AmendChild() {
       .then(() => {
         navigate(`/child/${childId}`);
       })
-      .catch((error) => setError(error.response.data.message));
+      .catch((error) => {
+        setError(error.response.data.message);
+      });
   };
 
   const deleteHandler = () => {
@@ -72,6 +77,9 @@ function AmendChild() {
       })
       .then(() => {
         navigate("/profile");
+      })
+      .catch((error) => {
+        setError(error.response.data.message);
       });
   };
 

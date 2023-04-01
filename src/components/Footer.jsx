@@ -1,10 +1,11 @@
-import React from "react";
+import { useContext, Fragment } from "react";
 
-import Logo from "../assets/images/bebehealthlogo.png";
 import Nav from "react-bootstrap/Nav";
 import { Container } from "react-bootstrap";
+
+import Logo from "../assets/images/bebehealthlogo.png";
+
 import { AuthContext } from "../context/auth.context";
-import { useContext, Fragment } from "react";
 
 function Footer() {
   const { isLoggedIn, logOutUser } = useContext(AuthContext);

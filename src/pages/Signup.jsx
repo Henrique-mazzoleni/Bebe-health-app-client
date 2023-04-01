@@ -36,14 +36,16 @@ function Signup() {
         console.log(response.data);
         navigate("/login");
       })
-      .catch((error) => setError(error.response.data.message));
+      .catch((error) => {
+        setError(error.response.data.message);
+      });
   };
 
   return (
     // Signup Form
 
     <main>
-    <h1>Sign Up</h1>
+      <h1>Sign Up</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="formGroupEmail">
           <Form.Label>Email address</Form.Label>
@@ -72,7 +74,7 @@ function Signup() {
             value={name}
           />
         </Form.Group>
-        <Button type="submit"  className="btn">
+        <Button type="submit" className="btn">
           Submit
         </Button>
 

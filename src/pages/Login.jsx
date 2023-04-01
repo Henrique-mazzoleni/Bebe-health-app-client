@@ -37,7 +37,9 @@ function Login() {
         return authenticateUser();
       })
       .then(() => navigate("/profile"))
-      .catch((error) => setError(error.response.data.message));
+      .catch((error) => {
+        setError(error.response.data.message);
+      });
   };
 
   return (

@@ -21,10 +21,10 @@ function AmendFeed() {
   const [bottleVolume, setBottleVolume] = useState("");
   const [throwUp, setThrowUp] = useState("");
   const [error, setError] = useState("");
-
+  
   const storedToken = localStorage.getItem("authToken");
 
-  const getFeed = () => {
+  useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/api/feeds/${childId}/${feedId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
@@ -45,10 +45,10 @@ function AmendFeed() {
         setLeftBreastDuration(leftBreastDuration);
         setBottleVolume(bottleVolume);
         setThrowUp(throwUp);
+      })
+      .catch((error) => {
+        setError(error.response.data.message);
       });
-  };
-  useEffect(() => {
-    getFeed();
   }, []);
 
   const dateAndTimeHandler = (e) => setDateAndTime(e.target.value);
@@ -78,7 +78,9 @@ function AmendFeed() {
       .then((response) => {
         navigate(`/feeds/${childId}`);
       })
-      .catch((error) => setError(error.response.data.message));
+      .catch((error) => {
+        setError(error.response.data.message);
+      });
   };
 
   const deleteHandler = () => {
@@ -90,7 +92,9 @@ function AmendFeed() {
       .then((response) => {
         navigate(`/feeds/${childId}`);
       })
-      .catch((error) => setError(error.response.data.message));
+      .catch((error) => {
+        setError(error.response.data.message);
+      });
   };
 
   return (

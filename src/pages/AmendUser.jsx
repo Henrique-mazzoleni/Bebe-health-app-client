@@ -30,6 +30,9 @@ function AmendUser() {
         const { name, email } = response.data;
         setNewEmail(email);
         setNewName(name);
+      })
+      .catch((error) => {
+        setError(error.response.data.message);
       });
   }, []);
 
@@ -56,7 +59,9 @@ function AmendUser() {
       .then(() => {
         navigate("/profile");
       })
-      .catch((error) => setError(error.response.data.message));
+      .catch((error) => {
+        setError(error.response.data.message);
+      });
   };
 
   const deleteHandler = () => {
@@ -69,6 +74,9 @@ function AmendUser() {
       })
       .then(() => {
         navigate("/");
+      })
+      .catch((error) => {
+        setError(error.response.data.message);
       });
   };
 
