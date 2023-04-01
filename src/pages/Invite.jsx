@@ -70,7 +70,11 @@ function Invite() {
           </Form.Group>
           <Form.Group className="mb-3" controlId="formGroupChild">
             <Form.Label>Children</Form.Label>
-            <Form.Select aria-label="children" onChange={childHandler}>
+            <Form.Select
+              aria-label="children"
+              onChange={childHandler}
+              value={childId}
+            >
               <option>Choose a Child</option>
               {user?.children.map((child) => (
                 <option className="dropDown" value={child._id} key={child._id}>

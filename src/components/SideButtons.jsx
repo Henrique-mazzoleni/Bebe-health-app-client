@@ -5,12 +5,9 @@ function SideButtons() {
   return (
     <div className="buttons">
       <hr />
-      <Button href="/newchild">
-        Add a child
-      </Button>
-      <Button href="/invite">
-        Invite a Parent
-      </Button>
+      <Button href="/newchild">Add a child</Button>
+      <Button href="/invite">Invite a Parent</Button>
+      <Button href="/amenduser">Edit User Info</Button>
     </div>
   );
 }

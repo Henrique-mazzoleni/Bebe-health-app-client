@@ -24,7 +24,7 @@ function HeaderNav() {
       .then((response) => {
         setUser(response.data);
       })
-      .catch((error) => {
+      .catch(() => {
         setUser(null);
       });
   };
