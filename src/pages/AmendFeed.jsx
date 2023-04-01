@@ -100,7 +100,7 @@ function AmendFeed() {
   return (
     <div>
       <aside>
-        <Sidebar />
+        <Sidebar childId={childId} />
       </aside>
       <main>
         <div className="addNew">
