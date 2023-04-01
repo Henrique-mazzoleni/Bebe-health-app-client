@@ -27,6 +27,7 @@ function Sleeps() {
       })
       .then((response) => {
         setSleeps(response.data);
+        setError("");
       })
       .catch((error) => {
         setError(error.response.data.message);
@@ -54,6 +55,7 @@ function Sleeps() {
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((response) => {
+        setError("");
         getAllSleeps();
       })
       .catch((error) => {
@@ -107,9 +109,14 @@ function Sleeps() {
                       </td>
                       <td>{sleep.duration} Hours</td>
                       <td>{sleep.location}</td>
-                      <td><Button href="/amendsleep" className="btnDelete">
-            Amend/Delete
-          </Button></td>
+                      <td>
+                        <Button
+                          href={`/sleeps/${childId}/${sleep._id}`}
+                          className="btnDelete"
+                        >
+                          Amend/Delete
+                        </Button>
+                      </td>
                     </tr>
                   );
                 })}

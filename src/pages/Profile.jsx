@@ -25,6 +25,7 @@ function Profile() {
       })
       .then((response) => {
         setUser(response.data);
+        setError("");
       })
       .catch((error) => {
         setError(error.response.data.message);
@@ -63,6 +64,7 @@ function Profile() {
         }
       );
       loadUser();
+      setError("");
     } catch (error) {
       setError(error.response.data.message);
     }

@@ -33,7 +33,6 @@ function Signup() {
         name,
       })
       .then((response) => {
-        console.log(response.data);
         navigate("/login");
       })
       .catch((error) => {

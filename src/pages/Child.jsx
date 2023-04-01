@@ -22,6 +22,7 @@ function Child() {
       })
       .then((response) => {
         setChild(response.data);
+        setError("");
       })
       .catch((error) => {
         setError(error.response.data.message);
@@ -66,9 +67,14 @@ function Child() {
               <td>{child?.gender}</td>
               <td>{child?.weightAtBirth}</td>
               <td>{child?.sizeAtBirth}</td>
-              <td><Button href="/amendchild" className="btnDelete">
-            Amend/Delete
-          </Button></td>
+              <td>
+                <Button
+                  href={`/ammendChild/${child?._id}`}
+                  className="btnDelete"
+                >
+                  Amend/Delete
+                </Button>
+              </td>
             </tr>
           </tbody>
         </Table>

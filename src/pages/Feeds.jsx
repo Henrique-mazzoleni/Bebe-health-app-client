@@ -65,6 +65,7 @@ function Feeds() {
       )
       .then((response) => {
         getAllFeeds();
+        setError("");
       })
       .catch((error) => {
         setError(error.response.data.message);
@@ -122,9 +123,14 @@ function Feeds() {
                       </td>
                       <td>{feed.bottleVolume ? feed.bottleVolume : "N/A"}</td>
                       <td>{feed.throwUp ? "Yes" : "No"}</td>
-                      <td><Button href="/amendfeed" className="btnDelete">
-            Amend/Delete
-          </Button></td>
+                      <td>
+                        <Button
+                          href={`/feeds/${childId}/${feed._id}`}
+                          className="btnDelete"
+                        >
+                          Amend/Delete
+                        </Button>
+                      </td>
                     </tr>
                   );
                 })}

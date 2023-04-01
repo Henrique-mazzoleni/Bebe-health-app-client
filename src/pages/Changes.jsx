@@ -32,6 +32,7 @@ function Changes() {
       })
       .then((response) => {
         setChanges(response.data);
+        setError("");
       })
       .catch((error) => {
         setError(error.response.data.message);
@@ -102,9 +103,14 @@ function Changes() {
                       </td>
                       <td>{change.kind}</td>
                       <td>{change.consistency}</td>
-                      <td><Button href="/amendchange" className="btnDelete">
-            Amend/Delete
-          </Button></td>
+                      <td>
+                        <Button
+                          className="btnDelete"
+                          href={`/changes/${childId}/${change._id}`}
+                        >
+                          Amend/Delete
+                        </Button>
+                      </td>
                     </tr>
                   );
                 })}
