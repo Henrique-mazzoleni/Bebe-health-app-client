@@ -1,9 +1,13 @@
-import React from "react";
-import { Form, Alert, Button } from "react-bootstrap";
-import Sidebar from "../components/Sidebar";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+
+import { Form, Alert, Button } from "react-bootstrap";
+
 import axios from "axios";
+
+import Sidebar from "../components/Sidebar";
+
+import dateTimeTransform from "../helpers/dateTimeTransform";
 
 function AmendChange() {
   const navigate = useNavigate();
@@ -28,14 +32,7 @@ function AmendChange() {
       .then((response) => {
         const { dateAndTime, kind, consistency } = response.data;
 
-        const datetimeDb = new Date(dateAndTime).toLocaleString().split(", ");
-        const date = datetimeDb[0].split(".");
-
-        setDateAndTime(
-          `${date[2]}-${date[1].padStart(2, "0")}-${date[0].padStart(2, "0")}T${
-            datetimeDb[1]
-          }`
-        );
+        setDateAndTime(dateTimeTransform(dateAndTime));
         setKind(kind);
         setConsistency(consistency);
       });

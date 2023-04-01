@@ -118,7 +118,11 @@ function Changes() {
 
               <Form.Group className="mb-3" controlId="formGroupKind">
                 <Form.Label>Kind</Form.Label>
-                <Form.Select aria-label="kind" onChange={kindHandler}>
+                <Form.Select
+                  aria-label="kind"
+                  onChange={kindHandler}
+                  value={kind}
+                >
                   <option>Change Kind</option>
 
                   <option className="dropDown" value="wet">
@@ -138,7 +142,11 @@ function Changes() {
 
               <Form.Group className="mb-3" controlId="formGroupConsistency">
                 <Form.Label>Consistency</Form.Label>
-                <Form.Select aria-label="kind" onChange={consistencyHandler}>
+                <Form.Select
+                  aria-label="kind"
+                  onChange={consistencyHandler}
+                  value={consistency}
+                >
                   <option>Consistency</option>
 
                   <option className="dropDown" value="liquid">

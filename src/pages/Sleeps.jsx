@@ -131,7 +131,11 @@ function Sleeps() {
 
               <Form.Group className="mb-3" controlId="formGroupLocation">
                 <Form.Label>Location</Form.Label>
-                <Form.Select aria-label="location" onChange={locationHandler}>
+                <Form.Select
+                  aria-label="location"
+                  onChange={locationHandler}
+                  value={location}
+                >
                   <option>Location</option>
                   <option className="dropDown" value="Parents Bed">
                     Parents Bed

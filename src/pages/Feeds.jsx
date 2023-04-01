@@ -1,17 +1,19 @@
 import { Alert, Button, Form, Table } from "react-bootstrap";
 
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 import Sidebar from "../components/Sidebar";
 
 import axios from "axios";
 
 function Feeds() {
+  const navigate = useNavigate();
+
   const { childId } = useParams();
 
   const [dateAndTime, setDateAndTime] = useState("");
-  const [kind, setKind] = useState("");
+  const [kind, setKind] = useState("breast");
   const [rightBreastDuration, setRightBreastDuration] = useState("");
   const [leftBreastDuration, setLeftBreastDuration] = useState("");
   const [bottleVolume, setBottleVolume] = useState("");
@@ -27,7 +29,6 @@ function Feeds() {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
-        // setUser(response.data)
         setFeeds(response.data);
       });
   };
@@ -90,7 +91,12 @@ function Feeds() {
                   const date = new Date(feed.dateAndTime);
 
                   return (
-                    <tr key={feed._id}>
+                    <tr
+                      key={feed._id}
+                      onClick={() => {
+                        navigate(`/feeds/${childId}/${feed._id}`);
+                      }}
+                    >
                       <td>
                         {date.toLocaleDateString()}
                         {date.toLocaleTimeString([], {
@@ -132,7 +138,11 @@ function Feeds() {
 
               <Form.Group className="mb-3" controlId="formGroupKind">
                 <Form.Label>Kind</Form.Label>
-                <Form.Select aria-label="kind" onChange={kindHandler}>
+                <Form.Select
+                  aria-label="kind"
+                  onChange={kindHandler}
+                  value={kind}
+                >
                   <option>Feed Kind</option>
 
                   <option className="dropDown" value="breast">
@@ -144,44 +154,52 @@ function Feeds() {
                 </Form.Select>
               </Form.Group>
 
-              <Form.Group
-                className="mb-3"
-                controlId="formGroupRightBreastDuration"
-              >
-                <Form.Label>Right Breast Duration</Form.Label>
-                <Form.Control
-                  type="number"
-                  placeholder="Duration"
-                  onChange={rightBreastDurationHandler}
-                  value={rightBreastDuration}
-                />
-              </Form.Group>
-              <Form.Group
-                className="mb-3"
-                controlId="formGroupleftBreastDuration"
-              >
-                <Form.Label>Left Breast Duration</Form.Label>
-                <Form.Control
-                  type="number"
-                  placeholder="Duration"
-                  onChange={leftBreastDurationHandler}
-                  value={leftBreastDuration}
-                />
-              </Form.Group>
-
-              <Form.Group className="mb-3" controlId="formGroupBottleVolume">
-                <Form.Label>Bottle Volume</Form.Label>
-                <Form.Control
-                  type="number"
-                  placeholder="Bottle Volume"
-                  onChange={bottleVolumeHandler}
-                  value={bottleVolume}
-                />
-              </Form.Group>
+              {kind === "breast" ? (
+                <Fragment>
+                  <Form.Group
+                    className="mb-3"
+                    controlId="formGroupRightBreastDuration"
+                  >
+                    <Form.Label>Right Breast Duration</Form.Label>
+                    <Form.Control
+                      type="number"
+                      placeholder="Duration"
+                      onChange={rightBreastDurationHandler}
+                      value={rightBreastDuration}
+                    />
+                  </Form.Group>
+                  <Form.Group
+                    className="mb-3"
+                    controlId="formGroupleftBreastDuration"
+                  >
+                    <Form.Label>Left Breast Duration</Form.Label>
+                    <Form.Control
+                      type="number"
+                      placeholder="Duration"
+                      onChange={leftBreastDurationHandler}
+                      value={leftBreastDuration}
+                    />
+                  </Form.Group>
+                </Fragment>
+              ) : (
+                <Form.Group className="mb-3" controlId="formGroupBottleVolume">
+                  <Form.Label>Bottle Volume</Form.Label>
+                  <Form.Control
+                    type="number"
+                    placeholder="Bottle Volume"
+                    onChange={bottleVolumeHandler}
+                    value={bottleVolume}
+                  />
+                </Form.Group>
+              )}
 
               <Form.Group className="mb-3" controlId="formGroupThrowUp">
                 <Form.Label>Throw Up</Form.Label>
-                <Form.Select aria-label="throwup" onChange={throwUpHandler}>
+                <Form.Select
+                  aria-label="throwup"
+                  onChange={throwUpHandler}
+                  value={throwUp}
+                >
                   <option>Throw Up</option>
 
                   <option className="dropDown" value={true}>
