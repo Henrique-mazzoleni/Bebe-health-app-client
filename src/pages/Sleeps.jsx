@@ -94,8 +94,7 @@ function Sleeps() {
                       }
                     >
                       <td>
-                        {startTime.toLocaleDateString()} 
-                        {startTime.toLocaleTimeString([], {
+                        {startTime.toLocaleDateString()} {startTime.toLocaleTimeString([], {
                           hour: "2-digit",
                           minute: "2-digit",
                         })}
