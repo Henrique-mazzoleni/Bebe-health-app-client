@@ -44,7 +44,8 @@ function Child() {
         {/* Children Details Table */}
 
         <h1>Details for {child?.name}</h1>
-
+        <div className="columnContainer">
+          <div className="col1">
         <Table className="details" striped bordered hover responsive>
           <thead>
             <tr>
@@ -83,6 +84,8 @@ function Child() {
 
         <div>
           <NavCards childId={childId} />
+        </div>
+        </div>
         </div>
       </main>
     </div>
