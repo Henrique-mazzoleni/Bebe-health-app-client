@@ -83,7 +83,7 @@ main form {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding-left: 15px;
+  padding-right: 20px;
   width: 150px; 
   padding-top: 20px;
 }
