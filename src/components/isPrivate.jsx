@@ -10,7 +10,7 @@ export default function IsPrivate({ children }) {
     <Spinner animation="border" role="status">
       <span className="visually-hidden">Loading...</span>
     </Spinner>
-  );;
+  );
 
   if (!isLoggedIn) return <Navigate to="/login" />;
 
