@@ -81,7 +81,7 @@ function Feeds() {
         <h1>Feeds</h1>
         <div className="columnContainer">
           <div className="col1">
-            <Table className="details" striped bordered hover>
+            <Table className="details" striped bordered hover responsive>
               <thead>
                 <tr>
                   <th>Date and Time</th>

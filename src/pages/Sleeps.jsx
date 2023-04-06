@@ -72,7 +72,7 @@ function Sleeps() {
         <h1>Sleeps</h1>
         <div className="columnContainer">
           <div className="col1">
-            <Table className="details" striped bordered hover>
+            <Table className="details" striped bordered hover responsive>
               <thead>
                 <tr>
                   <th>Start Time</th>
