@@ -19,6 +19,7 @@ h1, h2, h3, h4 {
   align-items: center;
   text-transform: capitalize;
   margin-top: 20px;
+  padding-right: 20px;
 }
 
 /* Sidebar positioning */
@@ -33,7 +34,6 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-left: 20px;
   border-radius: 10px;
   margin-top: 20px;
   color: #141823 ; 
