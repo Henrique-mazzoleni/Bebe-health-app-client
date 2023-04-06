@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import Sidebar from "../components/Sidebar";
 import axios from "axios";
+import { Pagination } from "react-bootstrap";
 
 function Changes() {
   const navigate = useNavigate();
@@ -25,14 +26,23 @@ function Changes() {
   const kindHandler = (e) => setKind(e.target.value);
   const consistencyHandler = (e) => setConsistency(e.target.value);
 
-  const getAllChanges = () => {
+  // Pagination Code
+
+  const [activePage, setActivePage] = useState(1)
+  const [noOfItems, setNoOfItems] = useState(1)
+  const [items, setItems] = useState([])
+
+  
+
+  const getPageChanges = () => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/api/changes/${childId}`, {
+      .get(`${import.meta.env.VITE_API_URL}/api/changes/${childId}?page=${activePage}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
-        setChanges(response.data);
-        setError("");
+        setChanges(response.data.changes);
+        setNoOfItems(response.data.noOfItems)
+        return
       })
       .catch((error) => {
         setError(error.response.data.message);
@@ -40,8 +50,26 @@ function Changes() {
   };
 
   useEffect(() => {
-    getAllChanges();
-  }, []);
+    getPageChanges();
+    console.log(noOfItems)
+    setItems(
+      Array.from(
+        {length : Math.ceil(noOfItems/10)},
+        (_, index) => (
+          <Pagination.Item key={index+1} active={index+1 === activePage} onClick={changePageHandler.bind(null, index+1)}>
+            {index+1}
+          </Pagination.Item>
+    )))
+  }, [noOfItems, activePage]);
+
+
+  const changePageHandler = (page) => {
+    console.log(page)
+    setActivePage(page)
+    getPageChanges()
+
+  
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -58,7 +86,7 @@ function Changes() {
       )
       .then((response) => {
         setError("");
-        getAllChanges();
+        getPageChanges();
       })
       .catch((error) => {
         setError(error.response.data.message);
@@ -72,6 +100,7 @@ function Changes() {
       </aside>
       <main>
         <h1>Changes</h1>
+        <Pagination>{items}</Pagination>
         <div className="columnContainer">
           <div className="col1">
             <Table className="details" striped bordered hover responsive>
@@ -101,7 +130,9 @@ function Changes() {
                         })}
                       </td>
                       <td>{change.kind}</td>
-                      <td>{change.consistency}</td>
+                      <td>{change.consistency
+                      ? change.consistency
+                      : "N/A"}</td>
                       <td>
                         <Button
                           className="btnDelete"

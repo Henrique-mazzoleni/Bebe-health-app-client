@@ -7,6 +7,8 @@ import Sidebar from "../components/Sidebar";
 
 import axios from "axios";
 
+import Pagination from 'react-bootstrap/Pagination';
+
 function Feeds() {
   const navigate = useNavigate();
 
@@ -21,23 +23,72 @@ function Feeds() {
   const [error, setError] = useState("");
   const [feeds, setFeeds] = useState([]);
 
-  const storedToken = localStorage.getItem("authToken");
+  // Pagination Code
 
-  const getAllFeeds = () => {
+  const [activePage, setActivePage] = useState(1)
+  const [noOfItems, setNoOfItems] = useState(1)
+  const [items, setItems] = useState([])
+
+  
+
+  const getPageFeeds = () => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/api/feeds/${childId}`, {
+      .get(`${import.meta.env.VITE_API_URL}/api/feeds/${childId}?page=${activePage}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
-        setFeeds(response.data);
+        setFeeds(response.data.feeds);
+        setNoOfItems(response.data.noOfItems)
+        return
       })
       .catch((error) => {
         setError(error.response.data.message);
       });
   };
+
   useEffect(() => {
-    getAllFeeds();
-  }, []);
+    getPageFeeds();
+    console.log(noOfItems)
+    setItems(
+      Array.from(
+        {length : Math.ceil(noOfItems/10)},
+        (_, index) => (
+          <Pagination.Item key={index+1} active={index+1 === activePage} onClick={changePageHandler.bind(null, index+1)}>
+            {index+1}
+          </Pagination.Item>
+    )))
+  }, [noOfItems, activePage]);
+
+
+  const changePageHandler = (page) => {
+    console.log(page)
+    setActivePage(page)
+    getPageFeeds()
+
+  
+  };
+
+  const storedToken = localStorage.getItem("authToken");
+
+
+
+  // const getAllFeeds = () => {
+  //   axios
+  //     .get(`${import.meta.env.VITE_API_URL}/api/feeds/${childId}`, {
+  //       headers: { Authorization: `Bearer ${storedToken}` },
+  //     })
+  //     .then((response) => {
+  //       setFeeds(response.data);
+  //     })
+  //     .catch((error) => {
+  //       setError(error.response.data.message);
+  //     });
+  // };
+  // useEffect(() => {
+  //   getAllFeeds();
+  // }, []);
+
+  
 
   const dateAndTimeHandler = (e) => setDateAndTime(e.target.value);
   const kindHandler = (e) => setKind(e.target.value);
@@ -64,13 +115,14 @@ function Feeds() {
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((response) => {
-        getAllFeeds();
+        getPageFeeds();
         setError("");
       })
       .catch((error) => {
         setError(error.response.data.message);
       });
   };
+
 
   return (
     <div>
@@ -79,6 +131,13 @@ function Feeds() {
       </aside>
       <main>
         <h1>Feeds</h1>
+
+        <div>
+        
+    <Pagination>{items}</Pagination>
+   
+
+  </div>
         <div className="columnContainer">
           <div className="col1">
             <Table className="details" striped bordered hover responsive>

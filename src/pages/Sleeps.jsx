@@ -5,6 +5,7 @@ import { Form, Table } from "react-bootstrap";
 import { Alert, Button } from "react-bootstrap";
 
 import Sidebar from "../components/Sidebar";
+import { Pagination } from "react-bootstrap";
 
 import axios from "axios";
 
@@ -20,14 +21,23 @@ function Sleeps() {
 
   const storedToken = localStorage.getItem("authToken");
 
-  const getAllSleeps = () => {
+  // Pagination Code
+
+  const [activePage, setActivePage] = useState(1)
+  const [noOfItems, setNoOfItems] = useState(1)
+  const [items, setItems] = useState([])
+
+  
+
+  const getPageSleeps = () => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/api/sleeps/${childId}`, {
+      .get(`${import.meta.env.VITE_API_URL}/api/sleeps/${childId}?page=${activePage}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
-        setSleeps(response.data);
-        setError("");
+        setSleeps(response.data.sleeps);
+        setNoOfItems(response.data.noOfItems)
+        return
       })
       .catch((error) => {
         setError(error.response.data.message);
@@ -35,8 +45,26 @@ function Sleeps() {
   };
 
   useEffect(() => {
-    getAllSleeps();
-  }, []);
+    getPageSleeps();
+    console.log(noOfItems)
+    setItems(
+      Array.from(
+        {length : Math.ceil(noOfItems/10)},
+        (_, index) => (
+          <Pagination.Item key={index+1} active={index+1 === activePage} onClick={changePageHandler.bind(null, index+1)}>
+            {index+1}
+          </Pagination.Item>
+    )))
+  }, [noOfItems, activePage]);
+
+
+  const changePageHandler = (page) => {
+    console.log(page)
+    setActivePage(page)
+    getPageSleeps()
+
+  
+  };
 
   const startTimeHandler = (e) => setStartTime(e.target.value);
   const endTimeHandler = (e) => setEndTime(e.target.value);
@@ -56,7 +84,7 @@ function Sleeps() {
       )
       .then((response) => {
         setError("");
-        getAllSleeps();
+        getPageSleeps();
       })
       .catch((error) => {
         setError(error.response.data.message);
@@ -70,6 +98,7 @@ function Sleeps() {
       </aside>
       <main>
         <h1>Sleeps</h1>
+        <Pagination>{items}</Pagination>
         <div className="columnContainer">
           <div className="col1">
             <Table className="details" striped bordered hover responsive>
@@ -82,7 +111,7 @@ function Sleeps() {
                 </tr>
               </thead>
               <tbody>
-                {sleeps.map((sleep) => {
+                {sleeps?.map((sleep) => {
                   const startTime = new Date(sleep.startTime);
                   const endTime = new Date(sleep.endTime);
 

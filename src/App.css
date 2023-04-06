@@ -149,8 +149,13 @@ main form {
 .columnContainer {
   display: flex;
   flex-direction: column;
+  justify-content:  center ;
   width: 100%;
   gap: 50px;
+}
+
+.columnContainer h1 {
+  text-align: center;
 }
 
 /* Styling for details tables */
@@ -159,7 +164,7 @@ main form {
   text-transform: capitalize;
   margin-top: 10px;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  width: 95%;
+  width: 99%;
 }
 
 /* Add New Forms Styling */
@@ -231,6 +236,8 @@ nav {
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   
 }
+
+
 
 .btn:hover {
   background-color: #141823;
