@@ -6,11 +6,7 @@ import Spinner from 'react-bootstrap/Spinner';
 export default function IsAnon({ children }) {
   const { isLoggedIn, isLoading } = useContext(AuthContext);
 
-  if (isLoading) return (
-    <Spinner animation="border" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </Spinner>
-  );;
+  if (isLoading) return <p>...Loading</p>;
 
   if (isLoggedIn) return <Navigate to="/" />;
 
