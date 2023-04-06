@@ -137,6 +137,7 @@ function Feeds() {
             </Table>
           </div>
           <div className="addNew">
+        
             <h3>Add new Feed</h3>
             <Form onSubmit={submitHandler}>
               <Form.Group className="mb-3" controlId="formGroupDateAndTime">

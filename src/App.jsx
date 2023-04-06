@@ -56,6 +56,8 @@ function App() {
             }
           />
 
+         
+
           {/* Protected Routes */}
 
           <Route
