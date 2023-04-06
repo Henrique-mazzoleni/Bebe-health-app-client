@@ -104,8 +104,7 @@ function Feeds() {
                       }}
                     >
                       <td>
-                        {date.toLocaleDateString()}
-                        {date.toLocaleTimeString([], {
+                        {date.toLocaleDateString()} {date.toLocaleTimeString([], {
                           hour: "2-digit",
                           minute: "2-digit",
                         })}
