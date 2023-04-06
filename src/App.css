@@ -159,7 +159,7 @@ main form {
   text-transform: capitalize;
   margin-top: 10px;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  padding-right: 5px;
+  padding-right: 10px;
 }
 
 /* Add New Forms Styling */
