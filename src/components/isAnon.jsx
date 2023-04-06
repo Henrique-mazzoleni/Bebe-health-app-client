@@ -8,7 +8,7 @@ export default function IsAnon({ children }) {
 
   if (isLoading) return (
     <Spinner animation="border" role="status">
-      <span className="visually-hidden">Loading...1</span>
+      <span className="visually-hidden">Loading...</span>
     </Spinner>
   );;
 
