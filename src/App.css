@@ -17,6 +17,7 @@ h1, h2, h3, h4 {
   flex-wrap: wrap;
   gap: 20px;
   align-items: center;
+  justify-content: center;
   text-transform: capitalize;
   margin-top: 20px;
   padding-right: 20px;
