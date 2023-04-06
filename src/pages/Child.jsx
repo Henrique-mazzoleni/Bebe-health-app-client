@@ -45,7 +45,7 @@ function Child() {
 
         <h1>Details for {child?.name}</h1>
 
-        <Table className="details" striped bordered hover>
+        <Table className="details" striped bordered hover responsive>
           <thead>
             <tr>
               <th>Name</th>
