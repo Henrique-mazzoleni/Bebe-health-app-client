@@ -5,7 +5,7 @@ import { Form, Table } from "react-bootstrap";
 import { Alert, Button } from "react-bootstrap";
 
 import Sidebar from "../components/Sidebar";
-import PaginationUI from "../UI/Pagination";
+import PaginationUI from "../components/UI/Pagination";
 
 import axios from "axios";
 

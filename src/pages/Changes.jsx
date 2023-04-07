@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import Sidebar from "../components/Sidebar";
-import PaginationUI from "../UI/Pagination";
+import PaginationUI from "../components/UI/Pagination";
 
 import axios from "axios";
 
