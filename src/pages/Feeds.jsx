@@ -4,10 +4,9 @@ import { useState, useEffect, Fragment } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import Sidebar from "../components/Sidebar";
+import PaginationUI from "../UI/Pagination";
 
 import axios from "axios";
-
-import Pagination from "react-bootstrap/Pagination";
 
 function Feeds() {
   const navigate = useNavigate();
@@ -27,7 +26,6 @@ function Feeds() {
 
   const [activePage, setActivePage] = useState(1);
   const [noOfItems, setNoOfItems] = useState(1);
-  const [items, setItems] = useState([]);
 
   const getPageFeeds = () => {
     axios
@@ -50,24 +48,9 @@ function Feeds() {
 
   useEffect(() => {
     getPageFeeds();
+  }, [activePage]);
 
-    setItems(
-      Array.from({ length: Math.ceil(noOfItems / 10) }, (_, index) => (
-        <Pagination.Item
-          key={index + 1}
-          active={index + 1 === activePage}
-          onClick={changePageHandler.bind(null, index + 1)}
-        >
-          {index + 1}
-        </Pagination.Item>
-      ))
-    );
-  }, [noOfItems, activePage]);
-
-  const changePageHandler = (page) => {
-    setActivePage(page);
-    getPageFeeds();
-  };
+  const changePageHandler = (page) => setActivePage(page);
 
   const dateAndTimeHandler = (e) => setDateAndTime(e.target.value);
   const kindHandler = (e) => setKind(e.target.value);
@@ -109,7 +92,11 @@ function Feeds() {
       </aside>
       <main>
         <h1>Feeds</h1>
-        {noOfItems > 10 && <Pagination>{items}</Pagination>}
+        <PaginationUI
+          noOfItems={noOfItems}
+          activePage={activePage}
+          onPageClick={changePageHandler}
+        />
         <div className="columnContainer">
           <div className="col1">
             <Table className="details" striped bordered hover responsive>

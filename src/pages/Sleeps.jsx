@@ -5,7 +5,7 @@ import { Form, Table } from "react-bootstrap";
 import { Alert, Button } from "react-bootstrap";
 
 import Sidebar from "../components/Sidebar";
-import { Pagination } from "react-bootstrap";
+import PaginationUI from "../UI/Pagination";
 
 import axios from "axios";
 
@@ -24,7 +24,6 @@ function Sleeps() {
 
   const [activePage, setActivePage] = useState(1);
   const [noOfItems, setNoOfItems] = useState(1);
-  const [items, setItems] = useState([]);
 
   const getPageSleeps = () => {
     axios
@@ -47,25 +46,10 @@ function Sleeps() {
 
   useEffect(() => {
     getPageSleeps();
+  }, [activePage]);
 
-    setItems(
-      Array.from({ length: Math.ceil(noOfItems / 10) }, (_, index) => (
-        <Pagination.Item
-          key={index + 1}
-          active={index + 1 === activePage}
-          onClick={changePageHandler.bind(null, index + 1)}
-        >
-          {index + 1}
-        </Pagination.Item>
-      ))
-    );
-  }, [noOfItems, activePage]);
-
-  const changePageHandler = (page) => {
-    setActivePage(page);
-    getPageSleeps();
-  };
-
+  const changePageHandler = (page) => setActivePage(page);
+  
   const startTimeHandler = (e) => setStartTime(e.target.value);
   const endTimeHandler = (e) => setEndTime(e.target.value);
   const locationHandler = (e) => setLocation(e.target.value);
@@ -98,7 +82,11 @@ function Sleeps() {
       </aside>
       <main>
         <h1>Sleeps</h1>
-        {noOfItems > 10 && <Pagination>{items}</Pagination>}
+        <PaginationUI
+          noOfItems={noOfItems}
+          activePage={activePage}
+          onPageClick={changePageHandler}
+        />
         <div className="columnContainer">
           <div className="col1">
             <Table className="details" striped bordered hover responsive>
