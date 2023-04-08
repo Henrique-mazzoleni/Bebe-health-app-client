@@ -21,6 +21,7 @@ function Sleeps() {
   const [sleeps, setSleeps] = useState([]);
   const [average, setAverage] = useState(0);
   const [window, setWindow] = useState(0);
+  const [goal, setGoal] = useState({})
 
   // Pagination Code
 
@@ -54,6 +55,7 @@ function Sleeps() {
       .then((response) => {
         setAverage(response.data.dailyAverage);
         setWindow(response.data.window);
+        setGoal(response.data.goal);
       })
       .catch((error) => {
         setError(error.response.data.message);
@@ -118,7 +120,7 @@ function Sleeps() {
 
             <div className="stat">
             <h3>Goal</h3>
-            <h1>{average.toFixed(2)} Hours</h1>
+            <h1>{goal.min}-{goal.max} Hours</h1>
             </div>
 
             
