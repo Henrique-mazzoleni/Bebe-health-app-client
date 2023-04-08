@@ -108,27 +108,19 @@ function Sleeps() {
           <div className="stat">
             <h3>Day Average</h3>
             <h1>{average.toFixed(2)} Hours</h1>
-            </div>
+          </div>
           <div className="stat">
             <h3>Sleep Window</h3>
             <h1>{window.toFixed(2)} Hours</h1>
-            </div>
+          </div>
           {/* If statement to decide which styling to use */}
           {/* <div className="inRange">
             <div className="outRange"> */}
 
-
-            <div className="stat">
-            <h3>Goal</h3>
-            <h1>{goal.min}-{goal.max} Hours</h1>
+            <div className={`stat ${(average > goal.min && average < goal.max) ? 'inRange' : 'outRange'}`} >
+              <h3>Goal</h3>
+              <h1>{goal.min}-{goal.max} Hours</h1>
             </div>
-
-            
-
-
-          
-          
-
 
         </div>
 
