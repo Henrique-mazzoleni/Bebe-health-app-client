@@ -273,12 +273,17 @@ nav {
   border-radius: 5px;
   border-style: solid;
   width: 30%;
-  padding: 20px;
+  padding: 10px;
+  
+  text-align: center;
+  font-size: 2rem;
 }
 
-.stat {
-  text-align: center;
+.stat{
+  font-size: 2rem;
 }
+
+
 
 /* Condtional styling for sleeps range */
 
