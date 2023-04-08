@@ -100,6 +100,20 @@ function Changes() {
       </aside>
       <main>
         <h1>Changes</h1>
+        <div className="statsContainer">
+          <div className="stat">
+            <h3>Week Average</h3>
+            <h1>7 Hours</h1>
+            </div>
+          <div className="stat">
+            <h3>Month Average</h3>
+            <h1>7 Hours</h1>
+            </div>
+          <div className="stat">
+            <h3>All Average</h3>
+            <h1>7 Hours</h1>
+            </div>
+            </div>
         <Pagination>{items}</Pagination>
         <div className="columnContainer">
           <div className="col1">
