@@ -4,13 +4,14 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import Sidebar from "../components/Sidebar";
+import PaginationUI from "../components/UI/Pagination";
+
 import axios from "axios";
-import { Pagination } from "react-bootstrap";
 
 function Changes() {
   const navigate = useNavigate();
-
   const { childId } = useParams();
+  const storedToken = localStorage.getItem("authToken");
 
   // New change useStates
 
@@ -20,29 +21,24 @@ function Changes() {
   const [error, setError] = useState("");
   const [changes, setChanges] = useState([]);
 
-  const storedToken = localStorage.getItem("authToken");
-
-  const dateAndTimeHandler = (e) => setDateAndTime(e.target.value);
-  const kindHandler = (e) => setKind(e.target.value);
-  const consistencyHandler = (e) => setConsistency(e.target.value);
-
   // Pagination Code
 
-  const [activePage, setActivePage] = useState(1)
-  const [noOfItems, setNoOfItems] = useState(1)
-  const [items, setItems] = useState([])
-
-  
+  const [activePage, setActivePage] = useState(1);
+  const [noOfItems, setNoOfItems] = useState(1);
 
   const getPageChanges = () => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/api/changes/${childId}?page=${activePage}`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
+      .get(
+        `${
+          import.meta.env.VITE_API_URL
+        }/api/changes/${childId}?page=${activePage}`,
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
+      )
       .then((response) => {
         setChanges(response.data.changes);
-        setNoOfItems(response.data.noOfItems)
-        return
+        setNoOfItems(response.data.noOfItems);
       })
       .catch((error) => {
         setError(error.response.data.message);
@@ -51,25 +47,15 @@ function Changes() {
 
   useEffect(() => {
     getPageChanges();
-    console.log(noOfItems)
-    setItems(
-      Array.from(
-        {length : Math.ceil(noOfItems/10)},
-        (_, index) => (
-          <Pagination.Item key={index+1} active={index+1 === activePage} onClick={changePageHandler.bind(null, index+1)}>
-            {index+1}
-          </Pagination.Item>
-    )))
-  }, [noOfItems, activePage]);
-
+  }, [activePage]);
 
   const changePageHandler = (page) => {
-    console.log(page)
-    setActivePage(page)
-    getPageChanges()
-
-  
+    setActivePage(page);
   };
+
+  const dateAndTimeHandler = (e) => setDateAndTime(e.target.value);
+  const kindHandler = (e) => setKind(e.target.value);
+  const consistencyHandler = (e) => setConsistency(e.target.value);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -100,6 +86,7 @@ function Changes() {
       </aside>
       <main>
         <h1>Changes</h1>
+
         <div className="statsContainer">
           <div className="stat">
             <h3>Week Average</h3>
@@ -114,7 +101,13 @@ function Changes() {
             <h1>7 Hours</h1>
             </div>
             </div>
-        <Pagination>{items}</Pagination>
+
+        <PaginationUI
+          noOfItems={noOfItems}
+          activePage={activePage}
+          onPageClick={changePageHandler}
+        />
+
         <div className="columnContainer">
           <div className="col1">
             <Table className="details" striped bordered hover responsive>
@@ -138,15 +131,14 @@ function Changes() {
                       }}
                     >
                       <td>
-                        {date.toLocaleDateString()} {date.toLocaleTimeString([], {
+                        {date.toLocaleDateString()}{" "}
+                        {date.toLocaleTimeString([], {
                           hour: "2-digit",
                           minute: "2-digit",
                         })}
                       </td>
                       <td>{change.kind}</td>
-                      <td>{change.consistency
-                      ? change.consistency
-                      : "N/A"}</td>
+                      <td>{change.consistency ? change.consistency : "N/A"}</td>
                       <td>
                         <Button
                           className="btnDelete"

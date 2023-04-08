@@ -5,13 +5,14 @@ import { Form, Table } from "react-bootstrap";
 import { Alert, Button } from "react-bootstrap";
 
 import Sidebar from "../components/Sidebar";
-import { Pagination } from "react-bootstrap";
+import PaginationUI from "../components/UI/Pagination";
 
 import axios from "axios";
 
 function Sleeps() {
   const navigate = useNavigate();
   const { childId } = useParams();
+  const storedToken = localStorage.getItem("authToken");
 
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
@@ -19,25 +20,24 @@ function Sleeps() {
   const [error, setError] = useState("");
   const [sleeps, setSleeps] = useState([]);
 
-  const storedToken = localStorage.getItem("authToken");
-
   // Pagination Code
 
-  const [activePage, setActivePage] = useState(1)
-  const [noOfItems, setNoOfItems] = useState(1)
-  const [items, setItems] = useState([])
-
-  
+  const [activePage, setActivePage] = useState(1);
+  const [noOfItems, setNoOfItems] = useState(1);
 
   const getPageSleeps = () => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/api/sleeps/${childId}?page=${activePage}`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
+      .get(
+        `${
+          import.meta.env.VITE_API_URL
+        }/api/sleeps/${childId}?page=${activePage}`,
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
+      )
       .then((response) => {
         setSleeps(response.data.sleeps);
-        setNoOfItems(response.data.noOfItems)
-        return
+        setNoOfItems(response.data.noOfItems);
       })
       .catch((error) => {
         setError(error.response.data.message);
@@ -46,26 +46,10 @@ function Sleeps() {
 
   useEffect(() => {
     getPageSleeps();
-    console.log(noOfItems)
-    setItems(
-      Array.from(
-        {length : Math.ceil(noOfItems/10)},
-        (_, index) => (
-          <Pagination.Item key={index+1} active={index+1 === activePage} onClick={changePageHandler.bind(null, index+1)}>
-            {index+1}
-          </Pagination.Item>
-    )))
-  }, [noOfItems, activePage]);
+  }, [activePage]);
 
-
-  const changePageHandler = (page) => {
-    console.log(page)
-    setActivePage(page)
-    getPageSleeps()
-
+  const changePageHandler = (page) => setActivePage(page);
   
-  };
-
   const startTimeHandler = (e) => setStartTime(e.target.value);
   const endTimeHandler = (e) => setEndTime(e.target.value);
   const locationHandler = (e) => setLocation(e.target.value);
@@ -98,6 +82,7 @@ function Sleeps() {
       </aside>
       <main>
         <h1>Sleeps</h1>
+
         <div className="statsContainer">
           <div className="stat">
             <h3>Day Total</h3>
@@ -114,7 +99,14 @@ function Sleeps() {
 
 
         </div>
-        <Pagination>{items}</Pagination>
+
+
+        <PaginationUI
+          noOfItems={noOfItems}
+          activePage={activePage}
+          onPageClick={changePageHandler}
+        />
+
         <div className="columnContainer">
           <div className="col1">
             <Table className="details" striped bordered hover responsive>
@@ -139,13 +131,15 @@ function Sleeps() {
                       }
                     >
                       <td>
-                        {startTime.toLocaleDateString()} {startTime.toLocaleTimeString([], {
+                        {startTime.toLocaleDateString()}{" "}
+                        {startTime.toLocaleTimeString([], {
                           hour: "2-digit",
                           minute: "2-digit",
                         })}
                       </td>
                       <td>
-                        {endTime.toLocaleDateString()} {endTime.toLocaleTimeString([], {
+                        {endTime.toLocaleDateString()}{" "}
+                        {endTime.toLocaleTimeString([], {
                           hour: "2-digit",
                           minute: "2-digit",
                         })}
