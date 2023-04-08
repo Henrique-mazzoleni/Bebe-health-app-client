@@ -19,6 +19,8 @@ function Sleeps() {
   const [location, setLocation] = useState("");
   const [error, setError] = useState("");
   const [sleeps, setSleeps] = useState([]);
+  const [average, setAverage] = useState(0);
+  const [window, setWindow] = useState(0);
 
   // Pagination Code
 
@@ -44,12 +46,27 @@ function Sleeps() {
       });
   };
 
+  const weekDailyAverage = () => {
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/api/sleeps/average/${childId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        setAverage(response.data.dailyAverage);
+        setWindow(response.data.window);
+      })
+      .catch((error) => {
+        setError(error.response.data.message);
+      });
+  };
+
   useEffect(() => {
     getPageSleeps();
+    weekDailyAverage();
   }, [activePage]);
 
   const changePageHandler = (page) => setActivePage(page);
-  
+
   const startTimeHandler = (e) => setStartTime(e.target.value);
   const endTimeHandler = (e) => setEndTime(e.target.value);
   const locationHandler = (e) => setLocation(e.target.value);
@@ -69,6 +86,7 @@ function Sleeps() {
       .then((response) => {
         setError("");
         getPageSleeps();
+        weekDailyAverage();
       })
       .catch((error) => {
         setError(error.response.data.message);
@@ -83,14 +101,15 @@ function Sleeps() {
       <main>
         <h1>Sleeps</h1>
 
+
         <div className="statsContainer">
           <div className="stat">
-            <h3>Day Total</h3>
-            <h1>7 Hours</h1>
+            <h3>Day Average</h3>
+            <h1>{average.toFixed(2)} Hours</h1>
             </div>
           <div className="stat">
-            <h3>Week Average</h3>
-            <h1>7 Hours</h1>
+            <h3>Sleep Window</h3>
+            <h1>{window.toFixed(2)} Hours</h1>
             </div>
           <div className="stat">
             <h3>Goal</h3>
@@ -99,7 +118,6 @@ function Sleeps() {
 
 
         </div>
-
 
         <PaginationUI
           noOfItems={noOfItems}
