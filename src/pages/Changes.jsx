@@ -20,6 +20,9 @@ function Changes() {
   const [consistency, setConsistency] = useState("");
   const [error, setError] = useState("");
   const [changes, setChanges] = useState([]);
+  const [weekAverage, setWeekAverage] = useState(0);
+  const [monthAverage, setMonthAverage] = useState(0);
+  const [allTimeAverage, setAllTimeAverage] = useState(0);
 
   // Pagination Code
 
@@ -45,8 +48,29 @@ function Changes() {
       });
   };
 
+  const getAverages = () => {
+    axios
+      .get(
+        `${
+          import.meta.env.VITE_API_URL
+        }/api/changes/average/${childId}`,
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
+      )
+      .then((response) => {
+        setWeekAverage(response.data.weeksDailyAverage)
+        setMonthAverage(response.data.monthsDailyAverage)
+        setAllTimeAverage(response.data.allTimeAverage)
+      })
+      .catch((error) => {
+        setError(error.response.data.message);
+      });
+  }
+
   useEffect(() => {
     getPageChanges();
+    getAverages();
   }, [activePage]);
 
   const changePageHandler = (page) => {
@@ -73,6 +97,7 @@ function Changes() {
       .then((response) => {
         setError("");
         getPageChanges();
+        getAverages();
       })
       .catch((error) => {
         setError(error.response.data.message);
@@ -90,15 +115,15 @@ function Changes() {
         <div className="statsContainer">
           <div className="stat">
             <h3>Week Average</h3>
-            <h1>7 Hours</h1>
+            <h2>{weekAverage.toFixed(1)} Dirty dipers / day</h2>
             </div>
           <div className="stat">
             <h3>Month Average</h3>
-            <h1>7 Hours</h1>
+            <h2>{monthAverage.toFixed(1)} Dirty dipers / day</h2>
             </div>
           <div className="stat">
             <h3>All Average</h3>
-            <h1>7 Hours</h1>
+            <h2>{allTimeAverage.toFixed(1)} Dirty dipers / day</h2>
             </div>
             </div>
 
