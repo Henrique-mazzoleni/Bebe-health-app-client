@@ -19,6 +19,8 @@ function Sleeps() {
   const [location, setLocation] = useState("");
   const [error, setError] = useState("");
   const [sleeps, setSleeps] = useState([]);
+  const [average, setAverage] = useState(0);
+  const [window, setWindow] = useState(0);
 
   // Pagination Code
 
@@ -44,12 +46,27 @@ function Sleeps() {
       });
   };
 
+  const weekDailyAverage = () => {
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/api/sleeps/average/${childId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        setAverage(response.data.dailyAverage);
+        setWindow(response.data.window);
+      })
+      .catch((error) => {
+        setError(error.response.data.message);
+      });
+  };
+
   useEffect(() => {
     getPageSleeps();
+    weekDailyAverage();
   }, [activePage]);
 
   const changePageHandler = (page) => setActivePage(page);
-  
+
   const startTimeHandler = (e) => setStartTime(e.target.value);
   const endTimeHandler = (e) => setEndTime(e.target.value);
   const locationHandler = (e) => setLocation(e.target.value);
@@ -69,6 +86,7 @@ function Sleeps() {
       .then((response) => {
         setError("");
         getPageSleeps();
+        weekDailyAverage();
       })
       .catch((error) => {
         setError(error.response.data.message);
@@ -82,6 +100,9 @@ function Sleeps() {
       </aside>
       <main>
         <h1>Sleeps</h1>
+        <h2>Week's daily average</h2>
+        <p>Daily Duration: {average.toFixed(2)} Hours</p>
+        <p>Sleep Window: {window.toFixed(2)} Hours</p>
         <PaginationUI
           noOfItems={noOfItems}
           activePage={activePage}
