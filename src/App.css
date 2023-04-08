@@ -257,6 +257,8 @@ nav {
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+/* Stats on Feeds, Changes and Sleeps */
+
 .statsContainer {
   display: flex;
   flex-direction: row;
@@ -276,4 +278,28 @@ nav {
 
 .stat {
   text-align: center;
+}
+
+/* Condtional styling for sleeps range */
+
+.inRange {
+  background-color: green;
+  border: #000;
+  border-width: 1px;
+  border-radius: 5px;
+  border-style: solid;
+  width: 30%;
+  padding: 20px;
+  color: greenyellow;
+}
+
+.outRange {
+  background-color: red;
+  border: #000;
+  border-width: 1px;
+  border-radius: 5px;
+  border-style: solid;
+  width: 30%;
+  padding: 20px;
+  color: rgb(255, 255, 255);
 }

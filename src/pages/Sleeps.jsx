@@ -111,10 +111,21 @@ function Sleeps() {
             <h3>Sleep Window</h3>
             <h1>{window.toFixed(2)} Hours</h1>
             </div>
-          <div className="stat">
+          {/* If statement to decide which styling to use */}
+          {/* <div className="inRange">
+            <div className="outRange"> */}
+
+
+            <div className="stat">
             <h3>Goal</h3>
-            <h1>7 Hours</h1>
+            <h1>{average.toFixed(2)} Hours</h1>
             </div>
+
+            
+
+
+          
+          
 
 
         </div>
