@@ -21,6 +21,9 @@ function Feeds() {
   const [throwUp, setThrowUp] = useState("");
   const [error, setError] = useState("");
   const [feeds, setFeeds] = useState([]);
+  const [rightBreastAverage, setRightBreastAverage] = useState(0);
+  const [leftBreastAverage, setLeftBreastAverage] = useState(0);
+  const [bottleAverage, setBottleAverage] = useState(0);
 
   // Pagination Code
 
@@ -46,8 +49,23 @@ function Feeds() {
       });
   };
 
+  const getAverages = () => {
+    axios.get(`${import.meta.env.VITE_API_URL}/api/feeds/average/${childId}`, {
+      headers: { Authorization: `Bearer ${storedToken}` },
+    })
+    .then((response) => {
+      setRightBreastAverage(response.data.rightBreastAverage)
+      setLeftBreastAverage(response.data.leftBreastAverage)
+      setBottleAverage(response.data.bottleAverage)
+    })
+    .catch((error) => {
+      setError(error.response.data.message);
+    });
+  };
+
   useEffect(() => {
     getPageFeeds();
+    getAverages();
   }, [activePage]);
 
   const changePageHandler = (page) => setActivePage(page);
@@ -76,8 +94,9 @@ function Feeds() {
         },
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
-      .then((response) => {
+      .then(() => {
         getPageFeeds();
+        getAverages();
         setError("");
       })
       .catch((error) => {
@@ -93,21 +112,20 @@ function Feeds() {
       <main>
         <h1>Feeds</h1>
 
-
         <div className="statsContainer">
           <div className="stat">
-            <h3>Day Total</h3>
-            <h1>7 Hours</h1>
-            </div>
+            <h3>Right Breast Average</h3>
+            <h1>{rightBreastAverage.toFixed(2)} Hours</h1>
+          </div>
           <div className="stat">
-            <h3>Month Average</h3>
-            <h1>7 Hours</h1>
-            </div>
+            <h3>Left Breast Average</h3>
+            <h1>{leftBreastAverage.toFixed(2)} Hours</h1>
+          </div>
           <div className="stat">
-            <h3>All Average</h3>
-            <h1>7 Hours</h1>
-            </div>
-            </div>
+            <h3>Bottle Average</h3>
+            <h1>{bottleAverage.toFixed(2)} ml</h1>
+          </div>
+        </div>
         <PaginationUI
           noOfItems={noOfItems}
           activePage={activePage}
