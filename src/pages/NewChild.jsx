@@ -15,6 +15,7 @@ function NewChild() {
   const [weightAtBirth, setWeightAtBirth] = useState("");
   const [sizeAtBirth, setSizeAtBirth] = useState("");
   const [error, setError] = useState("");
+  const [pictureURL, setPictureURL] = useState("");
 
   const navigate = useNavigate();
 
@@ -25,6 +26,24 @@ function NewChild() {
   const genderHandler = (e) => setGender(e.target.value);
   const weightAtBirthHandler = (e) => setWeightAtBirth(e.target.value);
   const sizeAtBirthHandler = (e) => setSizeAtBirth(e.target.value);
+
+  const fileUploadHandler = (e) => {
+    const uploadData = new FormData();
+    uploadData.append("pictureURL", e.target.files[0])
+
+    axios
+      .post(
+        `${import.meta.env.VITE_API_URL}/api/child/picture-upload`,
+        uploadData,
+        { headers: { Authorization: `Bearer ${storedToken}` } }
+      )
+      .then((response) => {
+        setPictureURL(response.data.pictureURL)
+      })
+      .catch((error) => {
+        setError(error.response.data.message);
+      });
+  }
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -37,6 +56,7 @@ function NewChild() {
           gender,
           weightAtBirth,
           sizeAtBirth,
+          pictureURL,
         },
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
@@ -100,6 +120,13 @@ function NewChild() {
               placeholder="Size at Birth"
               onChange={sizeAtBirthHandler}
               value={sizeAtBirth}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formGroupPictureFile">
+            <Form.Label>Profile Picture</Form.Label>
+            <Form.Control
+              type="file"
+              onChange={fileUploadHandler}
             />
           </Form.Group>
 

@@ -18,6 +18,7 @@ function AmendChild() {
   const [weightAtBirth, setWeightAtBirth] = useState("");
   const [sizeAtBirth, setSizeAtBirth] = useState("");
   const [error, setError] = useState("");
+  const [pictureURL, setPictureURL] = useState("");
 
   const storedToken = localStorage.getItem("authToken");
 
@@ -47,6 +48,24 @@ function AmendChild() {
   const weightAtBirthHandler = (e) => setWeightAtBirth(e.target.value);
   const sizeAtBirthHandler = (e) => setSizeAtBirth(e.target.value);
 
+  const fileUploadHandler = (e) => {
+    const uploadData = new FormData();
+    uploadData.append("pictureURL", e.target.files[0]);
+
+    axios
+      .post(
+        `${import.meta.env.VITE_API_URL}/api/child/picture-upload`,
+        uploadData,
+        { headers: { Authorization: `Bearer ${storedToken}` } }
+      )
+      .then((response) => {
+        setPictureURL(response.data.pictureURL);
+      })
+      .catch((error) => {
+        setError(error.response.data.message);
+      });
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
 
@@ -59,6 +78,7 @@ function AmendChild() {
           gender,
           weightAtBirth,
           sizeAtBirth,
+          pictureURL,
         },
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
@@ -137,6 +157,10 @@ function AmendChild() {
                 onChange={sizeAtBirthHandler}
                 value={sizeAtBirth}
               />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formGroupPictureFile">
+              <Form.Label>Profile Picture</Form.Label>
+              <Form.Control type="file" onChange={fileUploadHandler} />
             </Form.Group>
 
             <Button type="submit" variant="primary">
