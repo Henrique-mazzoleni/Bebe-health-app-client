@@ -21,7 +21,7 @@ function NavCards(props) {
       <Card style={{ width: "15rem"  }}>
         <Card.Img variant="top" src={Change} />
         <Card.Body>
-          <Card.Title>Changes</Card.Title>
+          <Card.Title>Changes Tracker</Card.Title>
           <Card.Text>Log your childs changes.</Card.Text>
           <Button  style={{border:"none", background: "#DE7886" }}  href={`/changes/${props.childId}`} variant="primary">
             Go to Changes Tracker
@@ -31,7 +31,7 @@ function NavCards(props) {
       <Card style={{ width: "15rem" }}>
         <Card.Img variant="top" src={Feed} />
         <Card.Body>
-          <Card.Title>Feeds</Card.Title>
+          <Card.Title>Feeds Tracker</Card.Title>
           <Card.Text>Log your childs feeds.</Card.Text>
           <Button  style={{border:"none", background: "#DE7886" }} href={`/feeds/${props.childId}`} variant="primary">
             Go to Feeds Tracker

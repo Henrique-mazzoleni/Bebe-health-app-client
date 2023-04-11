@@ -88,6 +88,10 @@ function AmendUser() {
       <main>
         <div className="addNew">
           <h3>Amend Your Details</h3>
+          <Button href="/profile" variant="primary">
+                    Go Back 
+                  </Button>
+                  <br />
           <Form onSubmit={submitHandler}>
             <Form.Group className="mb-3" controlId="formGroupEmail">
               <Form.Label>Email address</Form.Label>

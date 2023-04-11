@@ -102,7 +102,10 @@ function Sleeps() {
       </aside>
       <main>
         <h1>Sleeps</h1>
-
+        <Button href={`/child/${childId}`} variant="primary">
+                    Go Back 
+                  </Button>
+                  <br />
 
         <div className="statsContainer">
           <div className="stat">

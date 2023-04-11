@@ -88,6 +88,10 @@ function AmendChange() {
       <main>
         <div className="addNew">
           <h3>Amend a Change Entry</h3>
+          <Button href={`/child/${childId}`} variant="primary">
+                    Go Back 
+                  </Button>
+                  <br />
           <Form onSubmit={submitHandler}>
             <Form.Group className="mb-3" controlId="formGroupDateAndTime">
               <Form.Label>Date and Time</Form.Label>

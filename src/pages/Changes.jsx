@@ -1,5 +1,6 @@
 import { Form, Table, Alert, Button } from "react-bootstrap";
 
+
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -20,10 +21,9 @@ function Changes() {
   const [consistency, setConsistency] = useState("");
   const [error, setError] = useState("");
   const [changes, setChanges] = useState([]);
-  const [weekAverage, setWeekAverage] = useState(0);
-  const [monthAverage, setMonthAverage] = useState(0);
-  const [allTimeAverage, setAllTimeAverage] = useState(0);
-
+  const [dirtyAverage, setDirtyAverage] = useState(0);
+  const [wetAverage, setWetAverage] = useState(0);
+  
   // Pagination Code
 
   const [activePage, setActivePage] = useState(1);
@@ -59,10 +59,9 @@ function Changes() {
         }
       )
       .then((response) => {
-        setWeekAverage(response.data.weeksDailyAverage)
-        setMonthAverage(response.data.monthsDailyAverage)
-        setAllTimeAverage(response.data.allTimeAverage)
-      })
+        setDirtyAverage(response.data.dirtyAverage)
+        setWetAverage(response.data.wetAverage)
+        })
       .catch((error) => {
         setError(error.response.data.message);
       });
@@ -111,20 +110,21 @@ function Changes() {
       </aside>
       <main>
         <h1>Changes</h1>
+        <Button href={`/child/${childId}`} variant="primary">
+                    Go Back 
+                  </Button>
+                  <br />
 
         <div className="statsContainer">
           <div className="stat">
             <h3>Week Average</h3>
-            <h2>{weekAverage.toFixed(1)} Dirty dipers / day</h2>
+            <h2>{dirtyAverage.toFixed(1)} Dirty diapers</h2>
             </div>
           <div className="stat">
-            <h3>Month Average</h3>
-            <h2>{monthAverage.toFixed(1)} Dirty dipers / day</h2>
+            <h3>Week Average</h3>
+            <h2>{wetAverage.toFixed(1)} Wet diapers</h2>
             </div>
-          <div className="stat">
-            <h3>All Average</h3>
-            <h2>{allTimeAverage.toFixed(1)} Dirty dipers / day</h2>
-            </div>
+          
             </div>
 
         <PaginationUI

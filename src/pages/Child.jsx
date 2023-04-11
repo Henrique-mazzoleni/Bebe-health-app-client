@@ -7,6 +7,7 @@ import axios from "axios";
 
 import NavCards from "../components/NavCards";
 import Sidebar from "../components/Sidebar";
+import Sleep from "../assets/images/sleep.jpg";
 
 function Child() {
   const navigate = useNavigate();
@@ -46,6 +47,9 @@ function Child() {
         <h1>Details for {child?.name}</h1>
         <div className="columnContainer">
           <div className="col1">
+          <div className="childImageCtn">
+            <img className="childImageLrg" src={child?.pictureURL ? child?.pictureURL : Sleep} />
+          </div>
         <Table className="details" striped bordered hover responsive>
           <thead>
             <tr>

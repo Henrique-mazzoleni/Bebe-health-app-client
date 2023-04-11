@@ -167,6 +167,28 @@ main form {
   width: 99%;
 }
 
+.childImageCtn {
+  display: flex;
+  justify-content: center;
+}
+
+.childImage {
+  width: 238px;
+  height: 134px;
+  object-fit: cover;
+  
+}
+
+.childImageLrg {
+  width: 476px;
+  height: 268px;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 20px;
+
+}
+
 /* Add New Forms Styling */
 
 .addNew {

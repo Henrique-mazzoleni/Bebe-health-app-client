@@ -111,6 +111,10 @@ function Feeds() {
       </aside>
       <main>
         <h1>Feeds</h1>
+        <Button href={`/child/${childId}`} variant="primary">
+                    Go Back 
+                  </Button>
+                  <br />
 
         <div className="statsContainer">
           <div className="stat">
@@ -134,6 +138,7 @@ function Feeds() {
 
         <div className="columnContainer">
           <div className="col1">
+          
             <Table className="details" striped bordered hover responsive>
               <thead>
                 <tr>

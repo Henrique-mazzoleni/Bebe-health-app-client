@@ -15,6 +15,13 @@ function Welcome() {
   return (
     <main>
       <div className="welcomeFlex">
+      {/* Contextual links for signup and login, only appears when someone is not logged in */}
+
+      {!isLoggedIn && (
+          <Fragment>
+            <SignUpPrompt />
+          </Fragment>
+        )}
         
 
         {/* Sleeps card */}
@@ -24,7 +31,7 @@ function Welcome() {
             <img src={SleepIcon} />
           </div>
           <div className="text">
-            <h3>Track your childs sleeps</h3>
+            <h3>Track your child's sleeps</h3>
             <p>
               Record when you child sleeps, for how long and where they sleep.
             </p>
@@ -36,7 +43,7 @@ function Welcome() {
             <img src={ChangeIcon} />
           </div>
           <div className="text">
-            <h3>Track your childs changes</h3>
+            <h3>Track your child's changes</h3>
             <p>
               Track your childs changes by date and time, wet, dry or both, and
               the consistency to better understand your childs health.{" "}
@@ -51,7 +58,7 @@ function Welcome() {
             <img src={FeedIcon} />
           </div>
           <div className="text">
-            <h3>Track your childs feeds</h3>
+            <h3>Track your child's feeds</h3>
             <p>
               Keep tabs on your childs milk intact, ensuring your little one is
               getting enough.
@@ -89,13 +96,7 @@ function Welcome() {
           </div>
         </div>
 
-        {/* Contextual links for signup and login, only appears when someone is not logged in */}
-
-        {!isLoggedIn && (
-          <Fragment>
-            <SignUpPrompt />
-          </Fragment>
-        )}
+        
       </div>
     </main>
   );

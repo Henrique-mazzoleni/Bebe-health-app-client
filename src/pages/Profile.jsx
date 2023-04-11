@@ -85,7 +85,7 @@ function Profile() {
 
             return (
               <Card style={{ width: "15rem" }} key={singleChild._id}>
-                <Card.Img variant="top" src={singleChild.pictureURL ? singleChild.pictureURL : Sleep} />
+                <Card.Img className="childImage" variant="top" src={singleChild.pictureURL ? singleChild.pictureURL : Sleep} />
                 <Card.Body>
                   <Card.Title>{singleChild.name}</Card.Title>
                   <Card.Text>{dob}</Card.Text>
