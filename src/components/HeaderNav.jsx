@@ -37,14 +37,14 @@ function HeaderNav() {
   return (
     <Fragment>
       {/* Header Section */}
-    <div className="logoContainer">
-      <div className="logo">
-        <a href="/">
-          <img src={Logo} />
-        </a>
-        <Navbar.Brand href="/">Bebe Health Tracker</Navbar.Brand>
+      <div className="logoContainer">
+        <div className="logo">
+          <a href="/">
+            <img src={Logo} />
+          </a>
+          <Navbar.Brand href="/">Bebe Health Tracker</Navbar.Brand>
+        </div>
       </div>
-    </div>
       {/* Navigation Bar with contextual links */}
 
       <Navbar

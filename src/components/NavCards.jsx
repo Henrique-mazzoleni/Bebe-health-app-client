@@ -13,17 +13,25 @@ function NavCards(props) {
         <Card.Body>
           <Card.Title>Sleep Tracker</Card.Title>
           <Card.Text>Log your childs naps.</Card.Text>
-          <Button  style={{border:"none", background: "#DE7886" }}  href={`/sleeps/${props.childId}`} variant="primary">
+          <Button
+            style={{ border: "none", background: "#DE7886" }}
+            href={`/sleeps/${props.childId}`}
+            variant="primary"
+          >
             Go to Sleep Tracker
           </Button>
         </Card.Body>
       </Card>
-      <Card style={{ width: "15rem"  }}>
+      <Card style={{ width: "15rem" }}>
         <Card.Img variant="top" src={Change} />
         <Card.Body>
           <Card.Title>Changes Tracker</Card.Title>
           <Card.Text>Log your childs changes.</Card.Text>
-          <Button  style={{border:"none", background: "#DE7886" }}  href={`/changes/${props.childId}`} variant="primary">
+          <Button
+            style={{ border: "none", background: "#DE7886" }}
+            href={`/changes/${props.childId}`}
+            variant="primary"
+          >
             Go to Changes Tracker
           </Button>
         </Card.Body>
@@ -33,7 +41,11 @@ function NavCards(props) {
         <Card.Body>
           <Card.Title>Feeds Tracker</Card.Title>
           <Card.Text>Log your childs feeds.</Card.Text>
-          <Button  style={{border:"none", background: "#DE7886" }} href={`/feeds/${props.childId}`} variant="primary">
+          <Button
+            style={{ border: "none", background: "#DE7886" }}
+            href={`/feeds/${props.childId}`}
+            variant="primary"
+          >
             Go to Feeds Tracker
           </Button>
         </Card.Body>

@@ -112,9 +112,9 @@ function AmendChild() {
         <div className="addNew">
           <h1>Amend a Child</h1>
           <Button href={`/child/${childId}`} variant="primary">
-                    Go Back 
-                  </Button>
-                  <br />
+            Go Back
+          </Button>
+          <br />
           <Form onSubmit={submitHandler}>
             <Form.Group className="mb-3" controlId="formGroupName">
               <Form.Label>Name</Form.Label>

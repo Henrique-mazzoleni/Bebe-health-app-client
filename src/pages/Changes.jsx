@@ -1,6 +1,5 @@
 import { Form, Table, Alert, Button } from "react-bootstrap";
 
-
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -23,7 +22,7 @@ function Changes() {
   const [changes, setChanges] = useState([]);
   const [dirtyAverage, setDirtyAverage] = useState(0);
   const [wetAverage, setWetAverage] = useState(0);
-  
+
   // Pagination Code
 
   const [activePage, setActivePage] = useState(1);
@@ -50,22 +49,17 @@ function Changes() {
 
   const getAverages = () => {
     axios
-      .get(
-        `${
-          import.meta.env.VITE_API_URL
-        }/api/changes/average/${childId}`,
-        {
-          headers: { Authorization: `Bearer ${storedToken}` },
-        }
-      )
+      .get(`${import.meta.env.VITE_API_URL}/api/changes/average/${childId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
-        setDirtyAverage(response.data.dirtyAverage)
-        setWetAverage(response.data.wetAverage)
-        })
+        setDirtyAverage(response.data.dirtyAverage);
+        setWetAverage(response.data.wetAverage);
+      })
       .catch((error) => {
         setError(error.response.data.message);
       });
-  }
+  };
 
   useEffect(() => {
     getPageChanges();
@@ -111,21 +105,20 @@ function Changes() {
       <main>
         <h1>Changes</h1>
         <Button href={`/child/${childId}`} variant="primary">
-                    Go Back 
-                  </Button>
-                  <br />
+          Go Back
+        </Button>
+        <br />
 
         <div className="statsContainer">
           <div className="stat">
             <h3>Week Average</h3>
             <h2>{dirtyAverage.toFixed(1)} Dirty diapers</h2>
-            </div>
+          </div>
           <div className="stat">
             <h3>Week Average</h3>
             <h2>{wetAverage.toFixed(1)} Wet diapers</h2>
-            </div>
-          
-            </div>
+          </div>
+        </div>
 
         <PaginationUI
           noOfItems={noOfItems}

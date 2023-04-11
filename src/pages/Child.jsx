@@ -47,49 +47,52 @@ function Child() {
         <h1>Details for {child?.name}</h1>
         <div className="columnContainer">
           <div className="col1">
-          <div className="childImageCtn">
-            <img className="childImageLrg" src={child?.pictureURL ? child?.pictureURL : Sleep} />
-          </div>
-        <Table className="details" striped bordered hover responsive>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Date of Birth</th>
-              <th>Gender</th>
-              <th>Weight at Birth</th>
-              <th>Size at Birth</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              onClick={() => {
-                navigate(`/ammendChild/${child?._id}`);
-              }}
-            >
-              <td>{child?.name}</td>
-              <td>{dob}</td>
-              <td>{child?.gender}</td>
-              <td>{child?.weightAtBirth}</td>
-              <td>{child?.sizeAtBirth}</td>
-              <td>
-                <Button
-                  href={`/ammendChild/${child?._id}`}
-                  className="btnDelete"
+            <div className="childImageCtn">
+              <img
+                className="childImageLrg"
+                src={child?.pictureURL ? child?.pictureURL : Sleep}
+              />
+            </div>
+            <Table className="details" striped bordered hover responsive>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Date of Birth</th>
+                  <th>Gender</th>
+                  <th>Weight at Birth</th>
+                  <th>Size at Birth</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  onClick={() => {
+                    navigate(`/ammendChild/${child?._id}`);
+                  }}
                 >
-                  Amend/Delete
-                </Button>
-              </td>
-            </tr>
-          </tbody>
-        </Table>
+                  <td>{child?.name}</td>
+                  <td>{dob}</td>
+                  <td>{child?.gender}</td>
+                  <td>{child?.weightAtBirth}</td>
+                  <td>{child?.sizeAtBirth}</td>
+                  <td>
+                    <Button
+                      href={`/ammendChild/${child?._id}`}
+                      className="btnDelete"
+                    >
+                      Amend/Delete
+                    </Button>
+                  </td>
+                </tr>
+              </tbody>
+            </Table>
 
-        {/* Navigation cards section */}
+            {/* Navigation cards section */}
 
-        <div>
-          <NavCards childId={childId} />
-        </div>
-        </div>
+            <div>
+              <NavCards childId={childId} />
+            </div>
+          </div>
         </div>
       </main>
     </div>

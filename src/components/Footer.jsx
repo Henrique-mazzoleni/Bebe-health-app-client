@@ -14,7 +14,7 @@ function Footer() {
     <div className="footer">
       <nav className="navbar fixed-bottom bg-dark">
         <Container>
-          <div class="container-fluid">
+          <div className="container-fluid">
             <div className="footerCell">
               <a href="/">Home</a>
               {isLoggedIn && (

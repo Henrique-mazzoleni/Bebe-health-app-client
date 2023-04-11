@@ -158,6 +158,8 @@ main form {
   text-align: center;
 }
 
+
+
 /* Styling for details tables */
 
 .details {
@@ -170,6 +172,9 @@ main form {
 .childImageCtn {
   display: flex;
   justify-content: center;
+  max-width: 476px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .childImage {
@@ -180,12 +185,15 @@ main form {
 }
 
 .childImageLrg {
-  width: 476px;
-  height: 268px;
+  max-width: 100%;
+  width: auto;
+  height: auto;
   object-fit: cover;
   border-radius: 5px;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  
 
 }
 

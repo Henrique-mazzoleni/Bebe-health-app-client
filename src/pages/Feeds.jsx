@@ -50,17 +50,18 @@ function Feeds() {
   };
 
   const getAverages = () => {
-    axios.get(`${import.meta.env.VITE_API_URL}/api/feeds/average/${childId}`, {
-      headers: { Authorization: `Bearer ${storedToken}` },
-    })
-    .then((response) => {
-      setRightBreastAverage(response.data.rightBreastAverage)
-      setLeftBreastAverage(response.data.leftBreastAverage)
-      setBottleAverage(response.data.bottleAverage)
-    })
-    .catch((error) => {
-      setError(error.response.data.message);
-    });
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/api/feeds/average/${childId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        setRightBreastAverage(response.data.rightBreastAverage);
+        setLeftBreastAverage(response.data.leftBreastAverage);
+        setBottleAverage(response.data.bottleAverage);
+      })
+      .catch((error) => {
+        setError(error.response.data.message);
+      });
   };
 
   useEffect(() => {
@@ -112,9 +113,9 @@ function Feeds() {
       <main>
         <h1>Feeds</h1>
         <Button href={`/child/${childId}`} variant="primary">
-                    Go Back 
-                  </Button>
-                  <br />
+          Go Back
+        </Button>
+        <br />
 
         <div className="statsContainer">
           <div className="stat">
@@ -138,7 +139,6 @@ function Feeds() {
 
         <div className="columnContainer">
           <div className="col1">
-          
             <Table className="details" striped bordered hover responsive>
               <thead>
                 <tr>

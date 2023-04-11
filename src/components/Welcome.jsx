@@ -15,14 +15,13 @@ function Welcome() {
   return (
     <main>
       <div className="welcomeFlex">
-      {/* Contextual links for signup and login, only appears when someone is not logged in */}
+        {/* Contextual links for signup and login, only appears when someone is not logged in */}
 
-      {!isLoggedIn && (
+        {!isLoggedIn && (
           <Fragment>
             <SignUpPrompt />
           </Fragment>
         )}
-        
 
         {/* Sleeps card */}
 
@@ -45,8 +44,8 @@ function Welcome() {
           <div className="text">
             <h3>Track your child's changes</h3>
             <p>
-              Track your childs changes by date and time, wet, dry or both, and
-              the consistency to better understand your childs health.{" "}
+              Track your child's changes by date and time, wet, dry or both, and
+              the consistency to better understand your child's health.
             </p>
           </div>
         </div>
@@ -60,7 +59,7 @@ function Welcome() {
           <div className="text">
             <h3>Track your child's feeds</h3>
             <p>
-              Keep tabs on your childs milk intact, ensuring your little one is
+              Keep tabs on your child's milk intact, ensuring your little one is
               getting enough.
             </p>
           </div>
@@ -76,7 +75,7 @@ function Welcome() {
             <h3>Add more than 1 guardian</h3>
             <p>
               You can invite more guardians onto the app, making it easier to
-              tracks your childs health.
+              tracks your child's health.
             </p>
           </div>
         </div>
@@ -95,8 +94,6 @@ function Welcome() {
             </p>
           </div>
         </div>
-
-        
       </div>
     </main>
   );

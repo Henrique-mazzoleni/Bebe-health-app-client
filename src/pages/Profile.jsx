@@ -88,7 +88,7 @@ function Profile() {
                 <Card.Img className="childImage" variant="top" src={singleChild.pictureURL ? singleChild.pictureURL : Sleep} />
                 <Card.Body>
                   <Card.Title>{singleChild.name}</Card.Title>
-                  <Card.Text>{dob}</Card.Text>
+                  <Card.Text>Birth Date: {dob}</Card.Text>
                   <Button href={`child/${singleChild._id}`} variant="primary">
                     Go to {singleChild.name}
                   </Button>
