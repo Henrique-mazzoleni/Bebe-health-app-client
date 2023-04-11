@@ -298,12 +298,13 @@ nav {
 }
 
 .stat {
-  border: #000;
+  border: #00000049;
   border-width: 1px;
   border-radius: 5px;
   border-style: solid;
   width: 30%;
   padding: 10px;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   
   text-align: center;
   font-size: 2rem;
