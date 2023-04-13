@@ -14,6 +14,13 @@ The tracker can be used by all the people involved in the caring for a young chi
 
 [Bebe Health App](https://bebe-health.netlify.app/)
 
+## Features
+
+- Log childs feeds, naps and changes
+- Add and manage multiple children
+- Invite other guardians to a childs record
+- Upload an image of child
+
 ### Technical Requirements
 
 Develop a full-stack application that must meet the following technical requirements:
@@ -37,12 +44,7 @@ Develop a full-stack application that must meet the following technical requirem
 - [@Henrique-mazzoleni](https://github.com/Henrique-mazzoleni)
 
 
-## Features
 
-- Log childs feeds, naps and changes
-- Add and manage multiple children
-- Invite other guardians to a childs record
-- Upload an image of child
 
 
 
