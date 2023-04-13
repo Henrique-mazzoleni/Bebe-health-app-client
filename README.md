@@ -12,8 +12,8 @@ The tracker can be used by all the people involved in the caring for a young chi
 
 ### Link to Deployed App
 
-[Bebe Health App](https://bebe-health.netlify.app/)
-[Bebe Health Tracker - Server GitHub Page](https://github.com/Henrique-mazzoleni/Bebe-health-app-server)
+- [Bebe Health App](https://bebe-health.netlify.app/)
+- [Bebe Health Tracker - Server GitHub Page](https://github.com/Henrique-mazzoleni/Bebe-health-app-server)
 
 ## Features
 
