@@ -23,9 +23,9 @@ The Bebe Health Tracker was developed by Henrique Mazzoleni and Craig Butler as 
 
 The tracker can be used by all the people involved in the caring for a young child. It allows carers to track all aspects of a child's routine from feeds and naps to changes and more.
 
+### Link to Deployed App
 
-
-
+[Bebe Health App](https://bebe-health.netlify.app/)
 
 
 ## Authors
@@ -41,5 +41,5 @@ The tracker can be used by all the people involved in the caring for a young chi
 - Invite other guardians to a childs record
 
 
-![Logo](https://github.com/Henrique-mazzoleni/Bebe-health-app-client/blob/main/src/assets/images/bebehealthlogo.jpg?raw=true)
+![Logo](https://bebe-health.netlify.app/assets/bebehealthlogo-607eb7d8.png)
 
