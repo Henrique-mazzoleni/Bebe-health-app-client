@@ -1,4 +1,5 @@
 
+![Logo](https://bebe-health.netlify.app/assets/bebehealthlogo-607eb7d8.png)
 # Bebe Health Tracker
 
 ## IronHack Bootcamp module 3 project
@@ -41,7 +42,8 @@ Develop a full-stack application that must meet the following technical requirem
 - Log childs feeds, naps and changes
 - Add and manage multiple children
 - Invite other guardians to a childs record
+- Upload an image of child
 
 
-![Logo](https://bebe-health.netlify.app/assets/bebehealthlogo-607eb7d8.png)
+
 
