@@ -109,18 +109,18 @@ function Sleeps() {
 
         <div className="statsContainer">
           <div className="stat">
-            <h3>Day Average</h3>
-            <h1>{average.toFixed(2)} Hours</h1>
+            <h4>Day Average</h4>
+            <h2>{average.toFixed(2)} Hours</h2>
           </div>
           <div className="stat">
-            <h3>Sleep Window</h3>
-            <h1>{window.toFixed(2)} Hours</h1>
+            <h4>Sleep Window</h4>
+            <h2>{window.toFixed(2)} Hours</h2>
           </div>
           
 
             <div className={`stat ${(average > goal.min && average < goal.max) ? 'inRange' : 'outRange'}`} >
-              <h3>Goal</h3>
-              <h1>{goal.min}-{goal.max} Hours</h1>
+              <h4>Goal</h4>
+              <h2>{goal.min}-{goal.max} Hours</h2>
             </div>
 
         </div>
