@@ -3,6 +3,16 @@
 
 ## IronHack Bootcamp module 3 project
 
+### Description
+
+The Bebe Health Tracker was developed by Henrique Mazzoleni and Craig Butler as part of the IronHack Web Development bootcamp.
+
+The tracker can be used by all the people involved in the caring for a young child. It allows carers to track all aspects of a child's routine from feeds and naps to changes and more.
+
+### Link to Deployed App
+
+[Bebe Health App](https://bebe-health.netlify.app/)
+
 ### Technical Requirements
 
 Develop a full-stack application that must meet the following technical requirements:
@@ -17,15 +27,7 @@ Develop a full-stack application that must meet the following technical requirem
 - Have a backend validation and centralized error handling in your REST API.
 - Be deployed online, allowing anyone to access and use your app.
 
-### Description
 
-The Bebe Health Tracker was developed by Henrique Mazzoleni and Craig Butler as part of the IronHack Web Development bootcamp.
-
-The tracker can be used by all the people involved in the caring for a young child. It allows carers to track all aspects of a child's routine from feeds and naps to changes and more.
-
-### Link to Deployed App
-
-[Bebe Health App](https://bebe-health.netlify.app/)
 
 
 ## Authors
