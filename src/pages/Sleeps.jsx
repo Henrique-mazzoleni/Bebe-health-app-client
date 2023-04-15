@@ -110,11 +110,11 @@ function Sleeps() {
         <div className="statsContainer">
           <div className="stat">
             <h4>Day Average</h4>
-            <h2>{average.toFixed(2)} Hours</h2>
+            <h2>{average ? average.toFixed(2) : 0} Hours</h2>
           </div>
           <div className="stat">
             <h4>Sleep Window</h4>
-            <h2>{window.toFixed(2)} Hours</h2>
+            <h2>{window ? window.toFixed(2) : 0} Hours</h2>
           </div>
           
 
